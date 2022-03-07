@@ -99,6 +99,9 @@ select {
     font-size: 19px;
     color: lightseagreen;
 }
+.main > a{
+    text-decoration: none;
+}
 .tile-container {
     display:inline-block;
     /* right or left | up or down | how much strength */
@@ -107,7 +110,14 @@ select {
     margin-top: 3%;
     width: 30%;
     height: 180px;
+    /* for hover effect (time) */
+    transition: 0.7s;
 }
+.tile-container:hover {
+    /* creating hover effect (rise) */
+    transform: scale(1.1);
+}
+
 .tile-component1 {
     width: 45%;
     height: 180px;
