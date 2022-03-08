@@ -1,6 +1,8 @@
+
 body {
     margin:auto;
 }
+
 /* header section styling */
 #header {
     background-color: #de986f;
@@ -26,29 +28,166 @@ body {
     text-decoration: none;
 }
 /* ---------------------------------------------------------------------------- */
-p {
+/* main section styling */
+
+#heading-text {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
 }
-#content {
+
+/* main div (holding filter, and content div */
+#main-div {
     display: inline-block;
     width: 80%;
     margin-left: 10%;
 }
+
+/* filter div css */
 #filter-div {
     float: left;
     width: 20%;
     height: 500px;
-    border: 2px solid green;
+    border-radius: 10px;
+    /* border: 2px solid green; */
+    box-shadow: 1px 1px 7px grey;
 }
+#filter-heading1 {
+    font-size: 27px;
+    font-weight: bold;
+    color: black;
+}
+#filter-subheading1 {
+    font-size: 16px;
+    color: black;
+}
+
+#cuisine-filter {
+    margin-top: 10%;
+}
+#cost-filter {
+    margin-top: 10%;
+}
+/* applies to both, cuisine filter and cost filter */
+#filter-div label {
+    display: inline-block;
+    width: 100%;
+    margin-left: 10%;
+    font-weight: bold;
+    color: #85878a;
+}
+/* cost filter */
+#filter-subheading2 {
+    margin-top: 16%;
+    color: black;
+}
+
+
+/* content div css */
 #content-div {
     float: left;
     width: 77%;
-    height: 700px;
+    height: auto;
     margin-left: 2%;
-    border: 2px solid hotpink;
+    /* border: 2px solid hotpink; */
+    /* overflow-y: auto; */
 }
+/* food cards (in content-div) css */
+.card {
+    box-shadow: 5px 5px 5px #e0d6d6;
+    background-color: #f8fbfd;
+    /* border: 1px solid grey; */
+    height: 300px;
+    width: 80%;
+    border-radius: 10px;
+    margin-left: 2%;
+    background-color: white;
+    margin-top: 1%;
+    transition: 500ms;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+/* 
+        NOTE: here properties are given using child selectors, so that there is clarity in understanding the CSS
+        by relating the hierarchy with the HTML content.
+*/
+.card > .pic {
+    width: 38%;
+    height: 85%;
+    float: left;
+    margin-left: 4%;
+}
+
+.card > .pic > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
+.card > .info {
+    float: left;
+    margin-left: 5%;
+}
+/* this means, giving styling to the `info-heading` which is in `info div` which is a part of `card div` */
+.card > .info > .info-heading {
+    font-size: 30px;
+    color: #222e31;
+    text-align: left;
+
+}
+.card > .info > .info-desc {
+    color: #4e8760;
+}
+.card > .info > .info-desc > p {
+    line-height: 1px;
+    text-align: left;
+}
+.buttons > div{
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    width: 40%;
+    margin-top: 4%;
+    border-radius: 4%;
+    text-align: center;
+    border-radius: 30px;
+}
+.breakfast-button {
+    background-color:#b0b0ff;
+    margin-right: 10%;
+}
+.lunch-button {
+    background-color:lightgreen;
+}
+.north-indian-button {
+    background-color: #dd71dd;
+    margin-right: 10%;
+}
+.south-indian-button {
+    background-color:orange;
+}
+
+/* ---------------------------------------------------------------------------- */
+
+.page-navigation {
+    margin-top:5%;  
+    margin-left: 50%;
+}
+.page-navigation a {
+    text-decoration: none;
+    font-size: 25px;
+    border: 2px solid rgb(247, 240, 240);
+    padding: 0.8%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 6px;
+}
+#selected-page {
+    background-color: #ccf3ff;
+}
+
 /* ---------------------------------------------------------------------------- */
 
 /* footer styling */
@@ -56,15 +195,17 @@ p {
     /* background-color:cornflowerblue; */
     /* border: 6px dotted brown; */
     width: 100%;
-    height: 120px;
-    background-color: #e28b62;
+    height: 160px;
+    background-color: #de986f;
+    margin-top: 4%;
+    font-size: 20px;
 }
 p {
     text-align: center;
 }
 .footer-div {
     width: 33%;
-    height: 60%;
+    height: 65%;
     border-right: 2px solid black;
     float: left;
 }
