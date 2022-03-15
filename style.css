@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Merriweather:ital,wght@0,300;1,300&family=PT+Sans&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed:wght@300;400&display=swap');
 
+html {
+    --mode: white;
+}
+
 body {
+    background-color: var(--mode);
     margin: auto;
     font-family: 'Hubballi', cursive;
     background-color: #f1f6fb;
@@ -23,14 +28,26 @@ body {
     margin-left: 1%;
     margin-top: -0.5%;
 }
-#social {
+#background, #social {
     float: right;
     margin-right: 0.70%;
     margin-top: 0.3%;
 }
-#social img {
+#social img, #background img {
     height: 88%;
     width: auto;
+}
+#background img {
+    height: 70%;
+    margin-top: 4%;
+}
+#day:hover {
+    --mode: white;
+    background-color: var(--mode);
+}
+#night:hover {
+    --mode: black;
+    background-color: var(--mode);
 }
 #social a {
     text-decoration: none;
