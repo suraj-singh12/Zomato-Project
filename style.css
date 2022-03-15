@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Merriweather:ital,wght@0,300;1,300&family=PT+Sans&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed:wght@300;400&display=swap');
+
 body {
     margin: auto;
+    font-family: 'Hubballi', cursive;
+    background-color: #f1f6fb;
+    /* font-family: 'Merriweather', serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Sansita Swashed', cursive; */
 }
 
 /* header section styling */
@@ -42,12 +51,32 @@ body {
     height: 150px;
     border-radius: 50%;
     margin-top: 3%;
-    margin-left: 40%;
+    /* margin-left: 40%; */
+    margin-left: 5%;
     /* either of these properties can solve the problem */
     /* what problem? comment both of these */
     position: absolute;
     /* display:inline-block; */
+    font-family: 'Sansita Swashed', cursive;
+    animation: revolve 10s infinite;
 }
+
+@keyframes revolve {
+    /* on 0% time, it should be at 0deg rotated. */
+    0% {
+        transform: rotate(0deg);
+    }
+    /* by 50% of time elapsed, it should be 360deg rotated, and margin left should reach 90% */
+    50% {
+        margin-left: 85%;
+        transform: rotate(360deg);
+    }
+    /* when time reaches to 100%, it should again reach 0deg rotation (from previous 360) and margin left should become 10%; */
+    100% {
+        transform: rotate(0deg);
+        margin-left: 2%;}
+}
+/* transition -> transform, animation, keyframes */
 #logo > span {
     display: inline-block;
     margin-top: 17%;
@@ -57,7 +86,7 @@ body {
 #heading {
     position: absolute;
     margin-left: 18%;
-    margin-top: 14%;
+    margin-top: 15%;
     color: white;
     font-size: 59px;
 }
@@ -71,6 +100,9 @@ select {
     height: 60px;
     font-size: 20px;
     margin-right: 1%;
+    border-radius: 20px;
+    background-color: #c3c1a3;
+    font-family: 'Hubballi', cursive;
 }
 #restSelect {
     width: 55%;
@@ -80,7 +112,7 @@ select {
 /* quick-search section styling */
 #quick-search {
     width: 90%;
-    height: 569px;
+    height: auto;
     margin-top: 2%;
     margin-left: 6%;
 }
@@ -102,6 +134,11 @@ select {
 .main > a{
     text-decoration: none;
 }
+.main {
+    height:auto;
+    margin-bottom: 5%;
+    /* display: inline-block; */
+}
 .tile-container {
     display:inline-block;
     /* right or left | up or down | how much strength */
@@ -112,6 +149,7 @@ select {
     height: 180px;
     /* for hover effect (time) */
     transition: 0.7s;
+    border-radius: 25px;
 }
 .tile-container:hover {
     /* creating hover effect (rise) */
@@ -148,8 +186,13 @@ select {
     /* background-color:cornflowerblue; */
     /* border: 6px dotted brown; */
     width: 100%;
-    height: 120px;
+    height: 130px;
     background-color: #e28b62;
+    font-family: 'PT Sans', sans-serif;
+}
+#footer a {
+    text-decoration: none;
+    color: black;
 }
 p {
     text-align: center;
@@ -161,3 +204,115 @@ p {
     float: left;
 }
 /* ---------------------------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+    #drop-down {
+        margin-top: 24%;
+        margin-left: 23%;
+    }
+    #heading {
+        margin-left: 14%;
+        margin-top: 19%;
+    }
+}
+@media screen and (max-width: 1182px) {
+    #heading {
+        margin-left: 12%;
+        margin-top: 20%;
+    }
+    #drop-down {
+        margin-left: 21%;
+        margin-top: 27%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #heading {
+        margin-left: 5%;
+        margin-top: 22%;
+    }
+    #drop-down {
+        margin-left: 14%;
+        margin-top: 29%;
+    }
+    @keyframes revolve {
+        /* by 50% of time elapsed, it should be 360deg rotated, and margin left should reach 90% */
+        50% {
+            margin-left: 75%;
+            transform: rotate(360deg);
+        }
+    }
+}
+@media screen and (max-width: 960px) {
+    #heading {
+        margin-left: 14%;
+        margin-top: 26%;
+        font-size: 44px;
+    }
+    #drop-down {
+        margin-top: 33%;
+        margin-left: 19%;
+    }
+    .tile-container {
+        width: 46%;
+    }
+    select {
+        width: 41%;
+        font-size: 16px;
+    }
+}
+@media screen and (max-width:765px) {
+    #heading {
+        margin-left: 6%;
+        margin-top: 32%;
+    }
+    #drop-down {
+        margin-top: 40%;
+        margin-left: 12%;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .tile-container {
+        width: 90%;
+        margin-left: 3%;
+        box-shadow: 1px 1px 20px grey;
+        margin-top: 5%;
+    }
+    #heading {
+        font-size: 36px;
+        margin-left: 8%;
+    }
+
+    select {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    #logo {
+        animation:none;
+        margin-left: 35%;
+    }
+    #in-heading {
+        display: block;
+    }
+}
+@media screen and (max-width: 600px) {
+    .in-heading {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+    #drop-down {
+        margin-top: 48%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #drop-down {
+        margin-top: 61%;
+    }
+    #heading {
+        margin-top: 42%;
+    }
+}
