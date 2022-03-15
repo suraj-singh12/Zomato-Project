@@ -106,6 +106,7 @@ body {
     transition: 500ms;
     margin-left: 10%;
     margin-top: 2%;
+    margin-bottom: 6%;  
 }
 .card:hover {
     transform: scale(1.05);
@@ -129,6 +130,7 @@ body {
 .card > .info {
     float: left;
     margin-left: 5%;
+    width: 50%;
 }
 /* this means, giving styling to the `info-heading` which is in `info div` which is a part of `card div` */
 .card > .info > .info-heading {
@@ -141,7 +143,7 @@ body {
     color: #4e8760;
 }
 .card > .info > .info-desc > p {
-    line-height: 1px;
+    margin-top: -15px;
     text-align: left;
 }
 .buttons > div{
@@ -164,6 +166,7 @@ body {
 .north-indian-button {
     background-color: #dd71dd;
     margin-right: 10%;
+    font-size: 15px;
 }
 .south-indian-button {
     background-color:orange;
@@ -210,3 +213,52 @@ p {
     float: left;
 }
 /* ---------------------------------------------------------------------------- */
+@media screen and (max-width: 1240px) {
+    .card {
+        height: 251px;
+        width: 92%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #filter-div {
+        width: 25%;
+    }
+    #content-div {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .card > .info > .info-heading {
+        font-size: 16px;
+    }
+    #main-div {
+        width: 88%;
+        margin-left: 5%;
+    }
+    .page-navigation {
+        margin-left: 35%;
+    }
+}
+@media screen and (max-width: 600px) {
+    #filter-div {
+        width:32%;
+    }
+    #content-div {
+        width:60%;
+    }
+    .card {
+        height: 230px;
+    }
+    .card > .pic {
+        width: 36%;
+        height: 60%;
+    }
+    .page-navigation a {
+        font-size: 20px;
+    }
+    #footer {
+        font-size: 16px;
+    }
+}
