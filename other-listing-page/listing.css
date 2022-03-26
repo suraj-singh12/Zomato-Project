@@ -24,6 +24,9 @@ header {
     text-align: center;
     border-radius: 50%;
 }
+#icon a {
+    text-decoration: none;
+}
 #icon > p {
     margin-top: 3%;
     font-size: 30px;
@@ -181,5 +184,9 @@ hr {
 }
 #nav1 {
     background-color: rgb(210 204 196);
+}
+#navigation a {
+    text-decoration: none;
+    color: black;
 }
 /* ********************************************************** */
