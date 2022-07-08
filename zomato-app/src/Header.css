@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Merriweather:ital,wght@0,300;1,300&family=PT+Sans&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed:wght@300;400&display=swap');
+
+body {
+    font-family: 'Hubballi', cursive;
+    background-color: #f1f6fb;
+}
+.icon {
+    font-weight: bolder;
+    font-size: 3vw;
+}
+.dark-mode {
+    background-color: #333131;
+    color: white;
+}
+.dark-header {
+    background-color: black !important;
+}
+.navbar-img {
+    height: 3.4vw;
+    padding: auto;
+    margin: 0;
+}
+
+.background-orange {
+    background-color: #de986f !important;
+}
+@media screen and (max-width: 575px) {
+    .navbar-img {
+        display: block;
+        margin: auto;
+    }
+}

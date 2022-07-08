@@ -1,0 +1,46 @@
+
+.food-img{
+    background-image: url(/src/image/food-wallpaper.png);
+    background-repeat: no-repeat;
+    background-size: 100% 30vw;   /* height is 50 viewport width */
+}
+
+#logo {
+    background-color: rgba(255, 255, 255, 0.575);
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-top: 2%;
+
+    /* either of these properties can solve the problem */
+    /* what problem? comment both of these */
+    /* position: absolute; */
+    /* display: inline-block is better (allows bootstrap to work on) */
+    display:inline-block;
+    font-family: 'Sansita Swashed', cursive;
+}
+#logo > span {
+    /* display: inline-block; */
+    /* margin-top: 3%; */
+    /* margin-left: 19%; */
+    font-size: 6vw;
+}
+#heading {
+    display: inline-block;
+    /* position: absolute; */
+    /* margin-top: 12%; */
+    /* margin-left: 24%; */
+    color: white;
+    font-size: 4vw;
+}
+.dropdown-enhancement button, .dropdown-enhancement ul {
+    font-size: 1.7vw;
+    background-color: #c3c1a3;
+    border: #c3c1a3;
+    font-family: 'Hubballi', cursive;
+    margin-bottom: 5%;
+    margin-right: 1%;
+}
+.dropdown-enhancement button {
+    border-radius: 15px;
+}
