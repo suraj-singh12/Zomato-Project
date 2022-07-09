@@ -51,11 +51,14 @@ class Search extends Component {
         }
     }
 
-    // called when user selects any particular city name from dropdown
+    // called when user selects any particular state name from dropdown
     handleCity = (event) => {
         let stateId = event.target.value;       // event.targe.value has the state_id (check the <option value= >)
         console.log(stateId);
 
+        // fetch restaurants based on selected state (& update the state of restaurants; this will lead to re-rendering 
+        // i.e render() will be again executed with updated data, & that time restaurant data will be rendered too
+        //  as then this.state.restaurants will have data.)
         fetch(`${restUrl}?stateId=${stateId}`, { method: 'GET' })
             .then((res) => res.json())
             .then((data) => (
