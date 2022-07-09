@@ -23,7 +23,9 @@ class Header extends Component {
                                 <ul className="navbar-nav">
                                     {/* <!-- dark mode button --> */}
                                     <li className="nav-item">
-                                        <Link to="/" className="nav-link" id="night-button" href="#" onClick="ToggleDarkMode()">
+                                        
+                                        <Link to="/" className="nav-link" id="night-button" href="#">
+                                            {/*onClick="ToggleDarkMode()" */}
                                             <i className="bi bi-brightness-high" style={{fontSize: '2.2rem', color:'black'}}></i>
                                         </Link>
                                     </li>

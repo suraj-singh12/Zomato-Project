@@ -40,12 +40,23 @@ class Search extends Component {
         }
     }
 
+    renderRest = (data) => {
+        if (data) {
+            // console.log(data);
+            return data.map((item) => {
+                return (
+                    <option key={item.restaurant_id} value={item.restaurant_id}>{item.restaurant_name}</option>
+                )
+            })
+        }
+    }
+
     // called when user selects any particular city name from dropdown
     handleCity = (event) => {
         let stateId = event.target.value;       // event.targe.value has the state_id (check the <option value= >)
         console.log(stateId);
 
-        fetch(`{restUrl}?stateId=${stateId}`, { method: 'GET' })
+        fetch(`${restUrl}?stateId=${stateId}`, { method: 'GET' })
             .then((res) => res.json())
             .then((data) => (
                 this.setState({ restaurants: data })
@@ -91,7 +102,7 @@ class Search extends Component {
                         <select style={this.style.cityDropdown} className="dropdown-toggle">
                             <option>----Select Your Restaurant----</option>
                             {/* get the restaurant names rendered here */}
-                            {/* {this.renderCity(this.state.location)} */}
+                            {this.renderRest(this.state.restaurants)}
                         </select>
 
                     </div>
