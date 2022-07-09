@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import './search.css';
 
 const url = "https://app1api.herokuapp.com/location";
+const restUrl = "https://app1api.herokuapp.com/restaurants";
 
 class Search extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            location: ""
+            location: "",
+            restaurants: ""
         }
     }
 
@@ -32,10 +34,22 @@ class Search extends Component {
                     // Use unique and constant keys when rendering dynamic children, or expect strange things to happen.
 
                     // <li key={item.state_id}><Link to="/" className="dropdown-item">{item.state}</Link></li>
-                    <option key={item.state_id}>{item.state}</option>
+                    <option key={item.state_id} value={item.state_id}>{item.state}</option>
                 )
             })
         }
+    }
+
+    // called when user selects any particular city name from dropdown
+    handleCity = (event) => {
+        let stateId = event.target.value;       // event.targe.value has the state_id (check the <option value= >)
+        console.log(stateId);
+
+        fetch(`{restUrl}?stateId=${stateId}`, { method: 'GET' })
+            .then((res) => res.json())
+            .then((data) => (
+                this.setState({ restaurants: data })
+            ))
     }
 
     style = {
@@ -65,31 +79,21 @@ class Search extends Component {
                     <div></div>
 
                     <div className="dropdown dropdown-enhancement">
-                        {/* <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown">----Select Your
-                            City----</button> */}
-                        {/* <ul className="dropdown-menu"> */}
-                        {/* {this.renderCity(this.state.location)} */}
-                        {/* <li><a href="/" className="dropdown-item">Mathura</a></li>
-                            <li><a href="/" className="dropdown-item">Agra</a></li>
-                            <li><a href="/" className="dropdown-item">Mumbai</a></li>
-                            <li><a href="/" className="dropdown-item">Delhi</a></li> */}
-                        {/* </ul> */}
-                        <select style={this.style.cityDropdown} className="dropdown-toggle">
+                        
+                        {/* call handleCity() whenever user chooses any city from dropdown
+                        so that we will display restaurant based on that */}
+                        <select onChange={this.handleCity} style={this.style.cityDropdown} className="dropdown-toggle">
                             <option>----Select Your City----</option>
+                            {/* get the city names rendered here*/}
                             {this.renderCity(this.state.location)}
                         </select>
 
                         <select style={this.style.cityDropdown} className="dropdown-toggle">
                             <option>----Select Your Restaurant----</option>
+                            {/* get the restaurant names rendered here */}
                             {/* {this.renderCity(this.state.location)} */}
                         </select>
 
-                        {/* <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown">----Select Your
-                            Restaurant----</button>
-                        <ul className="dropdown-menu">
-                            <li><a href="/" className="dropdown-item">Taj Hotel</a></li>
-                            <li><a href="/" className="dropdown-item">BrijWasi</a></li>
-                        </ul> */}
                     </div>
                 </div>
             </>
