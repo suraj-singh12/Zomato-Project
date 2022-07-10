@@ -1,5 +1,5 @@
 
-.main {
+.quick-main {
     width: 100%;
 }
 
@@ -13,7 +13,8 @@
     color: lightseagreen;
     font-size:1em;
 }
-.tile-container {
+
+.quick-tile-container {
     display: inline-block;
     min-height: 180px;
     /* border: 1px solid black; */
@@ -23,40 +24,41 @@
     transition: 0.7s;
     /* width: 30%; */
 }
-.tile-container:hover {
+.quick-tile-container:hover {
     transform: scale(1.1);
 }
-.tile-component1 {
+
+.quick-tile-component1 {
     width: 40%;
     height: 100%;
     float: left;
 }
-.tile-component1 > img {
+.quick-tile-component1 > img {
     /* object-fit: fill; */
     /* width: 100%; */
     width: auto;
     height: inherit;
     
 }
-.tile-component2 {
+.quick-tile-component2 {
     width: 60%;
     height: 100%;
     float: left;
 }
-.component2-heading {
+.quick-component2-heading {
     font-size: 25px;
     color: orange;
 }
-.component2-subheading {
+.quick-component2-subheading {
     color: grey;
 }
 @media screen and (min-width: 990px) {
-    .tile-container {
+    .quick-tile-container {
         width: 27%;
     }
 }
 @media screen and (max-width: 990px) {
-    .tile-container {
+    .quick-tile-container {
         min-height: 15vw;
         height: 20vw;
         /* width: auto; */
@@ -65,7 +67,7 @@
     }
 }
 @media screen and (max-width: 770px) {
-    .tile-container {
+    .quick-tile-container {
         /* height: 100px; */
         height: 29vw;
         width: 80%;

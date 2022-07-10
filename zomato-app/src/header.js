@@ -26,7 +26,7 @@ class Header extends Component {
                                         
                                         <Link to="/" className="nav-link" id="night-button" href="#">
                                             {/*onClick="ToggleDarkMode()" */}
-                                            <i className="bi bi-brightness-high" style={{fontSize: '2.2rem', color:'black'}}></i>
+                                            <i className="bi bi-brightness-high" style={{fontSize: '2.2vw', color:'black'}}></i>
                                         </Link>
                                     </li>
                                     <li className="nav-item">

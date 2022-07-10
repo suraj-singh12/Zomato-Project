@@ -12,14 +12,14 @@ const QuickDisplay = (props) => {
         if (mealData) {
             return mealData.map((item) => {
                 return (
-                    < div className="col-lg-3 py-0 px-0 mb-5 tile-container" key={item._id}>
+                    < div className="col-lg-3 py-0 px-0 mb-5 quick-tile-container" key={item._id}>
                         <Link to={`/listing/${item.mealtype_id}`}>
-                            <div className="card tile-component1">
+                            <div className="card quick-tile-component1">
                                 <img className="img-fluid" src={item.meal_image} alt={item.mealtype} title={item.mealtype}/>
                             </div>
-                            <div className="card-body tile-component2 text-center">
-                                <div className="card-title component2-heading">{item.mealtype}</div>
-                                <div className="card-text component2-subheading">{item.content}</div>
+                            <div className="card-body quick-tile-component2 text-center">
+                                <div className="card-title quick-component2-heading">{item.mealtype}</div>
+                                <div className="card-text quick-component2-subheading">{item.content}</div>
                             </div>
                         </Link>
                     </div >
@@ -30,7 +30,7 @@ const QuickDisplay = (props) => {
     
     return (
         <>
-            <div className="row main">
+            <div className="row quick-main">
                 {listMeal(props)}
             </div>
         </>
