@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from './searchComponent';
-import QuickSearch from './quickComponent';
+import QuickSearch from './quickDisplay';
 
 const Home = () => {
     return (

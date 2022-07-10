@@ -1,4 +1,8 @@
 
+.main {
+    width: 100%;
+}
+
 .quick-heading, .quick-description {
     margin-left: 2%;
 }
@@ -15,7 +19,7 @@
     /* border: 1px solid black; */
     box-shadow: 10px 20px 40px grey;
     border-radius: 25px;
-    margin-left: 2%;
+    margin-left: 4%;
     transition: 0.7s;
     /* width: 30%; */
 }
@@ -47,17 +51,21 @@
 }
 @media screen and (min-width: 990px) {
     .tile-container {
-        width: 30%;
+        width: 27%;
     }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 990px) {
     .tile-container {
         min-height: 15vw;
         height: 15vw;
+        /* width: auto; */
+        width: 40%;
+        margin: auto;
     }
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 750px) {
     .tile-container {
         height: 100px;
+        width: 80%;
     }
 }
