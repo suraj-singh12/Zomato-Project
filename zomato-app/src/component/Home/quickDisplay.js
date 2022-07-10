@@ -13,7 +13,7 @@ const QuickDisplay = (props) => {
             return mealData.map((item) => {
                 return (
                     < div className="col-lg-3 py-0 px-0 mb-5 tile-container" key={item._id}>
-                        <Link to="/">
+                        <Link to={`/listing/${item.mealtype_id}`}>
                             <div className="card tile-component1">
                                 <img className="img-fluid" src={item.meal_image} alt={item.mealtype} title={item.mealtype}/>
                             </div>
