@@ -2,7 +2,7 @@
 .food-img{
     background-image: url(/src/image/food-wallpaper.png);
     background-repeat: no-repeat;
-    background-size: 100% 30vw;   /* height is 50 viewport width */
+    background-size: 100% 27vw;   /* height is 50 viewport width */
 }
 
 #logo {

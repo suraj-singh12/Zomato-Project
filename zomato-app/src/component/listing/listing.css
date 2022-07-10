@@ -1,237 +1,147 @@
+@import url('https://fonts.listing-googleapis.listing-com/css2?family=Merriweather:ital,wght@0,300;1,300&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed&display=swap');
 
-/* ---------------------------------------------------------------------------- */
-/* main section styling */
-
-#listing-heading-text {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-/* main div (holding filter, and content div */
-#listing-main-div {
+/* main section css */
+/* ********************************************************** */
+#listing-main-section {
     display: inline-block;
-    width: 80%;
+    font-family: 'Playfair Display', serif;
+    margin: auto;
     margin-left: 10%;
+    margin-top: 1%;
+    width: 88%;
 }
 
 /* filter div css */
-#listing-filter-div {
+#listing-filter {
     float: left;
-    width: 20%;
-    height: 500px;
-    border-radius: 10px;
-    /* border: 2px solid green; */
-    box-shadow: 1px 1px 7px grey;
+    box-shadow: 0px 3px 6px rgb(214 212 212);
+    border-radius: 5px;
+    width: 15%;
+    margin-right: 5%;
+    padding-left: 2%;
+    margin-bottom: 3%;
+    margin-top: 1%;
+    line-height: 120%;
+    line-height: 1.6;
 }
-#listing-filter-heading1 {
-    font-size: 27px;
+#listing-heading {
+    font-size: 30px;
     font-weight: bold;
-    color: black;
 }
-#listing-filter-subheading1 {
-    font-size: 16px;
-    color: black;
+.listing-sub-heading > p {
+    font-weight: bold;
 }
-
-#listing-cuisine-filter {
-    margin-top: 10%;
+.listing-sub-heading > select {
+    height: 4%;
+    border: 1px solid #8C96AB;
+    border-radius: 3px;
+    color: #8C96AB;
 }
-#listing-cost-filter {
-    margin-top: 10%;
-}
-/* applies to both, cuisine filter and cost filter */
-#listing-filter-div label {
+#listing-filter label {
     display: inline-block;
     width: 100%;
-    margin-left: 10%;
-    font-weight: bold;
-    color: #85878a;
+    color: grey;
 }
-/* cost filter */
-#listing-filter-subheading2 {
-    margin-top: 16%;
+#listing-sort {
+    margin-bottom: 30%;
+}
+#listing-sort > p {
+    font-weight: bold;
+}
+
+/* cards css */
+#listing-cards {
+    display: inline-block;
+    /* width: 70%; */
+    width: 80%;
+    height: auto;
+    margin-top: 1%;
+}
+#listing-cards a {
+    text-decoration: none;
     color: black;
 }
-
-
-/* content div css */
-#listing-content-div {
-    float: left;
-    width: 77%;
-    height: auto;
-    margin-left: 2%;
-    /* border: 2px solid hotpink; */
-    /* overflow-y: auto; */
+hr {
+    border: 0.5px solid #ccc8c8;
 }
-/* food cards (in content-div) css */
 .listing-card {
     display: inline-block;
-    box-shadow: 5px 5px 5px #e0d6d6;
-    background-color: #f8fbfd;
-    /* border: 1px solid grey; */
-    height: 300px;
+    padding: 3%;
+    height: auto;
     width: 80%;
-    border-radius: 10px;
-    margin-left: 2%;
-    background-color: white;
-    margin-top: 1%;
-    transition: 500ms;
-    margin-left: 10%;
-    margin-top: 2%;
-    margin-bottom: 6%;  
+    margin-left: 5%;
+    box-shadow: 0px 3px 6px rgb(214, 212, 212);
+    margin-bottom: 4%;
+    transition: transform 500ms;
 }
 .listing-card:hover {
-    transform: scale(1.listing-05);
+    transform: scale(1.1);
 }
-/* 
-        NOTE: here properties are given using child selectors, so that there is clarity in understanding the CSS
-        by relating the hierarchy with the HTML content.listing-
-*/
-.listing-card > .listing-pic {
-    width: 38%;
-    height: 85%;
+.listing-image {
     float: left;
-    margin-left: 4%;
+    width: 13%;     
+    height: 90px;
+    margin-left: 2%;
+    margin-top: 2%;
 }
-
-.listing-card > .listing-pic > img {
+.listing-image > img {
     width: 100%;
     height: 100%;
-    border-radius: 5%;
+    border-radius: 25px;
 }
-.listing-card > .listing-info {
+.listing-content {
     float: left;
-    margin-left: 5%;
-    width: 50%;
+    margin-left: 10%;
+    line-height: 12%;
+    line-height: 1.3;
 }
-/* this means, giving styling to the `info-heading` which is in `info div` which is a part of `card div` */
-.listing-card > .listing-info > .listing-info-heading {
+.listing-content-heading {
     font-size: 30px;
-    color: #222e31;
-    text-align: left;
-
-}
-.listing-card > .listing-info > .listing-info-desc {
-    color: #4e8760;
-}
-.listing-card > .listing-info > .listing-info-desc > p {
-    margin-top: -15px;
-    text-align: left;
-}
-.listing-buttons > div{
-    display: inline-block;
-    color: white;
     font-weight: bold;
-    width: 40%;
-    margin-top: 4%;
-    border-radius: 4%;
-    text-align: center;
-    border-radius: 30px;
 }
-.listing-breakfast-button {
-    background-color:#b0b0ff;
-    margin-right: 10%;
-}
-.listing-lunch-button {
-    background-color:lightgreen;
-}
-.listing-north-indian-button {
-    background-color: #dd71dd;
-    margin-right: 10%;
-    font-size: 15px;
-}
-.listing-south-indian-button {
-    background-color:orange;
-}
-
-/* ---------------------------------------------------------------------------- */
-
-.listing-page-navigation {
-    margin-top:5%;  
-    margin-left: 50%;
-}
-.listing-page-navigation a {
-    text-decoration: none;
-    font-size: 25px;
-    border: 2px solid rgb(247, 240, 240);
-    padding: 0.8%;
-    padding-left: 2%;
-    padding-right: 2%;
-    border-radius: 6px;
-}
-#listing-selected-page {
-    background-color: #ccf3ff;
-}
-
-/* ---------------------------------------------------------------------------- */
-
-/* footer styling */
-#listing-footer {
-    /* background-color:cornflowerblue; */
-    /* border: 6px dotted brown; */
-    width: 100%;
-    height: 160px;
-    background-color: #de986f;
-    margin-top: 4%;
+.listing-content-subheading1 {
     font-size: 20px;
+    font-weight: bold;
 }
-p {
-    text-align: center;
+.listing-card-upper {
+    display: inline-block;
+    width: 90%;
+    /* margin-bottom: 2%; */
 }
-.listing-footer-div {
-    width: 33%;
-    height: 65%;
-    border-right: 2px solid black;
+
+.listing-text-below-img {
+    display: inline-block;
+    width: 100%;
+}
+.listing-text-below-img {
+    width: 25%;
     float: left;
 }
-/* ---------------------------------------------------------------------------- */
-@media screen and (max-width: 1240px) {
-    .listing-card {
-        height: 251px;
-        width: 92%;
-    }
+.listing-text-below-content {
+    width: 50%;
+    float: left;
+}
+.listing-card-below {
+    margin-top: -1%;
 }
 
-@media screen and (max-width: 800px) {
-    #listing-filter-div {
-        width: 25%;
-    }
-    #listing-content-div {
-        width: 70%;
-    }
+/* navigation style */
+#listing-navigation {
+    margin-left: 40%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
-
-@media screen and (max-width: 780px) {
-    .listing-card > .listing-info > .listing-info-heading {
-        font-size: 16px;
-    }
-    #listing-main-div {
-        width: 88%;
-        margin-left: 5%;
-    }
-    .listing-page-navigation {
-        margin-left: 35%;
-    }
+#listing-navigation div {
+    display: inline-block;
+    padding: 1.4%;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
-@media screen and (max-width: 600px) {
-    #listing-filter-div {
-        width:32%;
-    }
-    #listing-content-div {
-        width:60%;
-    }
-    .listing-card {
-        height: 230px;
-    }
-    .listing-card > .listing-pic {
-        width: 36%;
-        height: 60%;
-    }
-    .listing-page-navigation a {
-        font-size: 20px;
-    }
-    #listing-footer {
-        font-size: 16px;
-    }
+#listing-nav1 {
+    background-color: rgb(210 204 196);
 }
+#listing-navigation a {
+    text-decoration: none;
+    color: black;
+}
+/* ********************************************************** */

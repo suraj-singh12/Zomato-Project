@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.quick-search {
+    margin-top: -5%;
+}
+
 .quick-heading, .quick-description {
     margin-left: 2%;
 }

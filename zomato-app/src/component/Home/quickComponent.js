@@ -16,7 +16,7 @@ class QuickSearch extends Component {
 
     render() {
         return (
-            <div className="container p-5 mt-0 quick-search" >
+            <div className="container p-5 quick-search" >
                 <p className="h1 quick-heading">Quick Search</p>
                 <p className="quick-description">Discover Restaurants by Meal</p>
                 
