@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import QuickDisplay from './quickDisplay';
 
 // quickSearch url
-const url="https://app1api.herokuapp.com/mealtype";
+const url='https://app1api.herokuapp.com/mealtype';
 
 class QuickSearch extends Component {
     constructor(props) {
@@ -19,6 +19,7 @@ class QuickSearch extends Component {
             <div className="container p-5 mt-0 quick-search" >
                 <p className="h1 quick-heading">Quick Search</p>
                 <p className="quick-description">Discover Restaurants by Meal</p>
+                
                 <QuickDisplay mealData={this.state.mealType}/>
             </div>
         )
