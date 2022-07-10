@@ -17,13 +17,13 @@ const ListingDisplay = (props) => {
                             <div className="listing-card">
                                 <div className="listing-card-upper">
                                     <div className="listing-image">
-                                        <img src={item.restaurant_thumb} alt="burger" title="burger" />
+                                        <img src={item.restaurant_thumb} alt={item.restaurant_name} title={item.restaurant_name} />
                                     </div>
 
                                     <div className="listing-content">
-                                        <p className="listing-content-heading">The Big Rich Burger</p>
+                                        <p className="listing-content-heading">{item.restaurant_name}</p>
                                         <p className="listing-content-subheading1">Fort</p>
-                                        <p className="listing-place">Shop 1, Plot D, Samruddhi Complex, Chincholi ...</p>
+                                        <p className="listing-place">{item.address}</p>
                                     </div>
                                 </div>
                                 <hr />
@@ -33,8 +33,8 @@ const ListingDisplay = (props) => {
                                         <p>COST FOR TWO:</p>
                                     </div>
                                     <div className="listing-text-below-content">
-                                        <p>Bakery</p>
-                                        <p>&#8377;700</p>
+                                        <p>{item.cuisines[0].cuisine_name}, {item.cuisines[1].cuisine_name}</p>
+                                        <p>&#8377; {item.cost}</p>
                                     </div>
                                 </div>
                             </div>
