@@ -9,8 +9,8 @@ const Routing = () => {
     return (
         <BrowserRouter>
             <Header />
+            <Route exact path="/" component={Home} />
             <Route path="/listing/:id" component={Listing} />
-            <Route path="/" component={Home} />
             <Footer />
         </BrowserRouter>
     )
