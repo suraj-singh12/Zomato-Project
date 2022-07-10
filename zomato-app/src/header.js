@@ -8,10 +8,10 @@ class Header extends Component {
             <>
                 {/* add light / dark mode later */}
                 <header>
-                    <a href="/"><div id="icon"><p>e!</p></div></a>
+                    <Link to="/"><div id="icon"><p>e!</p></div></Link>
                     <div id="account">
-                        <a href="listing.html"><p id="login">Login</p></a>
-                        <a href="listing.html"><p id="create-account">Create an account</p></a>
+                        <Link to="/"><p id="login">Login</p></Link>
+                        <Link to="/"><p id="create-account">Create an account</p></Link>
                     </div>
                 </header>
             </>

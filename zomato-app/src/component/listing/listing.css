@@ -1,4 +1,4 @@
-@import url('https://fonts.listing-googleapis.listing-com/css2?family=Merriweather:ital,wght@0,300;1,300&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed&display=swap');
+/* @import url('https://fonts.listing-googleapis.listing-com/css2?family=Merriweather:ital,wght@0,300;1,300&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed&display=swap'); */
 
 /* main section css */
 /* ********************************************************** */
@@ -16,8 +16,8 @@
     float: left;
     box-shadow: 0px 3px 6px rgb(214 212 212);
     border-radius: 5px;
-    width: 15%;
-    margin-right: 5%;
+    width: 18%;
+    margin-right: 3%;
     padding-left: 2%;
     margin-bottom: 3%;
     margin-top: 1%;
@@ -53,7 +53,7 @@
 #listing-cards {
     display: inline-block;
     /* width: 70%; */
-    width: 80%;
+    width: 70%;
     height: auto;
     margin-top: 1%;
 }
