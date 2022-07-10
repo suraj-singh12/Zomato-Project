@@ -2,6 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ListingDisplay = (props) => {
+    let bgColor = 'lightgreen';
+    const getMealType = (mealTypes) => {
+        return mealTypes.map((item) => {
+            bgColor = (bgColor === 'lightgreen') ? 'orange' : 'lightgreen';
+            return (
+                <span className="btn btn-sm" style={{ marginRight: '2%', backgroundColor: `${bgColor}` }}>{item.mealtype_name}</span>
+            )
+        })
+    }
+
+    const getCuisines = (cuisines) => {
+        let bgColor = 'lightCoral';
+        return cuisines.map((item) => {
+            bgColor = (bgColor === 'lightCoral') ? 'lightblue' : 'lightCoral';
+            return (
+                <span className="btn btn-sm" style={{ marginRight: '2%', backgroundColor: `${bgColor}` }}>{item.cuisine_name}</span>
+            )
+        })
+    }
 
     // render restaurant data here;             this.props.listData
     const renderData = ({ listData }) => {
@@ -24,17 +43,20 @@ const ListingDisplay = (props) => {
                                         <p className="listing-content-heading">{item.restaurant_name}</p>
                                         <p className="listing-content-subheading1">Fort</p>
                                         <p className="listing-place">{item.address}</p>
+                                        <p className="listing-rating">{item.rating_text}</p>
                                     </div>
                                 </div>
                                 <hr />
                                 <div className="listing-card-below">
                                     <div className="listing-text-below-img">
-                                        <p>CUISINES:</p>
-                                        <p>COST FOR TWO:</p>
+                                        <p>MEALTYPE:</p>
+                                        <p style={{marginTop: '25px'}}>CUISINES:</p>
+                                        <p style={{marginTop: '15px'}}>COST FOR TWO:</p>
                                     </div>
                                     <div className="listing-text-below-content">
-                                        <p>{item.cuisines[0].cuisine_name}, {item.cuisines[1].cuisine_name}</p>
-                                        <p>&#8377; {item.cost}</p>
+                                        <p>{getMealType(item.mealTypes)}</p>
+                                        <p>{getCuisines(item.cuisines)}</p>
+                                        <p style={{fontWeight: 'bold'}}>&#8377; {item.cost}</p>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +75,7 @@ const ListingDisplay = (props) => {
         } else {
             // if data has not come yet (means api is not yet called), say loading
             return (
-                <div style={{marginLeft: '25%'}}>
+                <div style={{ marginLeft: '25%' }}>
                     <img src={require("./images/loader.gif")} alt="loader" />
                     <h2>Loading...</h2>
                 </div>
