@@ -68,7 +68,7 @@ class MenuDisplay extends Component {
 
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <div className="col-md-12 bg-success details-menu-items-down">
                     <h1>Item Added</h1>
                     <span>Item Number {this.renderCart(this.orderId)} Added</span>

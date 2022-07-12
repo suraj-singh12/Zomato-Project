@@ -47,14 +47,24 @@ class RestDetails extends Component {
         this.state = {
             details: '',        // details of the restaurant
             menuList: '',       // menu of the restaurant
-            userItem: '',
-            mealId: sessionStorage.getItem('mealId') ? sessionStorage.getItem('mealId') : '',         // which meal id you have selected.
+            userItem: '',       // items that user selects from menu
+            mealId: sessionStorage.getItem('mealId') ? sessionStorage.getItem('mealId') : '',         // which meal id user has selected (that we had stored, when user had selected : in listing.js (i.e. listing page))
         }
     }
 
 
     addToCart = (data) => {
         this.setState({userItem: data});
+    }
+
+    // on clicking the checkout button
+    proceed = () => {
+        // save the state of menu userItems on pressing checkout button
+        // because we will require it on next page 
+        sessionStorage.setItem('menu', this.state.userItem);
+        
+        // now jump to the page /placeOrder page
+        this.props.history.push(`/placeOrder/${this.state.details.restaurant_name}`);
     }
 
     render() {
@@ -94,7 +104,7 @@ class RestDetails extends Component {
                         </div>
                         <h2 id="details-isOpen">Currently Open</h2>
                         <button className="details-btn btn btn-danger" style={{ marginRight: '1%' }}>Back</button>
-                        <button className="details-btn btn btn-success">Checkout</button>
+                        <button className="details-btn btn btn-success" onClick={this.proceed}>Checkout</button>
                     </div>
                 </div>
                 <div className="details-menuDisplay">
