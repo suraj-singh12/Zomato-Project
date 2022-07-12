@@ -54,23 +54,25 @@ class RestDetails extends Component {
     }
 
     render() {
+        // let details = this.state.details;
+        let {details} = this.state;     // is equivalent to above one
         return (
             <div id="details-main-content">
                 <div id="details-photo">
-                    <img src="https://i.ibb.co/2sHyZGg/snacks.png" alt="snacks" />
+                    <img src={this.state.details.restaurant_thumb} alt="snacks" />
                 </div>
                 <div id="details-content">
-                    <h2 id="details-heading-main">Samosa Chatni Snacks (2Pcs)</h2>
+                    <h2 id="details-heading-main">{details.restaurant_name}</h2>
                     <i className="fa-regular fa-star checked"></i>
                     <i className="fa-regular fa-star checked"></i>
                     <i className="fa-regular fa-star checked"></i>
                     <i className="fa-regular fa-star-half checked"></i>
-                    <span>231 Customers Rating</span>
-                    <h3>
-                        <strike>Old Price: 290</strike>
-                    </h3>
-                    <h3>New Price: 190</h3>
-                    <h3>Best Taste of Fresh Chai with Samosa At your Door or Dine In</h3>
+                    <span>231 Customers Rating is {details.rating_text}</span>
+                    <h4>
+                        <strike>Old Price: {details.cost + 240}</strike>
+                    </h4>
+                    <h4>New Price: {details.cost}</h4>
+                    <h4>Best Taste of Fresh Chai with Samosa At your Door or Dine In</h4>
                     <div id="details-icons">
                         <div className="details-icon">
                             <img src="https://i.ibb.co/wJvrhYg/veg.png" alt="pure-veg" title="pure-veg" />
@@ -85,9 +87,9 @@ class RestDetails extends Component {
                             <p>Free Delivery</p>
                         </div>
                     </div>
-                    <h2 id="details-available">Available</h2>
-                    <button className="details-btn btn">Add to Cart</button>
-                    <button className="details-btn btn">Checkout</button>
+                    <h2 id="details-isOpen">Currently Open</h2>
+                    <button className="details-btn btn btn-danger" style={{marginRight:'1%'}}>Back</button>
+                    <button className="details-btn btn btn-success">Checkout</button>
                 </div>
             </div>
         )

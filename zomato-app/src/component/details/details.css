@@ -1,43 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Merriweather:ital,wght@0,300;1,300&family=PT+Sans&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed:wght@300;400&display=swap');
 
-/* body {
-    margin: auto;
-    font-family: 'Hubballi', cursive;
-    background-color: #f1f6fb; */
-    /* font-family: 'Merriweather', serif;
-    font-family: 'Playfair Display', serif;
-    font-family: 'Poppins', sans-serif;
-    font-family: 'PT Sans', sans-serif;
-    font-family: 'Sansita Swashed', cursive; */
-/* } */
-
-/* header section styling */
-/* #header {
-    background-color: #de986f;
-    width: 100%;
-    height: 55px;
-}
-#icon {
-    font-size: 15px;
-    float: left;
-    margin-left: 1%;
-    margin-top: -0.5%;
-}
-#social {
-    float: right;
-    margin-right: 0.70%;
-    margin-top: 0.3%;
-}
-#social img {
-    height: 88%;
-    width: auto;
-}
-#social a {
-    text-decoration: none;
-} */
 /* ---------------------------------------------------------------------------- */
 
 #details-main-content {
+    margin: auto;
+    font-family: 'Hubballi', cursive;
     margin-top: 4%;
     width: 90%;
     margin-left: 5%;
@@ -62,10 +29,11 @@
     margin-left: 10%;
     width: 45%;
     float: left;
+    font-size: 20px;
 }
 #details-heading-main {
     margin-top: 0;
-    font-size: 44px;
+    font-size: 40px;
 }
 .details-checked {
     color: red;
@@ -74,59 +42,63 @@
     margin-top: 2%;
 }
 #details-icons {
-    /* height: 150px; */
-    /* border: 2px solid black; */
     width: 100%;
     display: inline-block;
+    height: 68px;
+    margin-bottom: 2%;
 }
 .details-icon {
     float: left;
     margin-right: 5%; 
+    height: 60px;
 }
 .details-icon p {
     text-align: center;
 }
 .details-icon img {
-    width: 100px;
-    height: 100px;
+    width: auto;
+    height: 100%;
 }
-#details-available {
+#details-isOpen {
     color: lightgreen;
-    font-size: 38px;
+    font-size: 34px;
 }
 .details-btn {
-    background-color: #d5cbc9;
+    /* background-color: #d5cbc9; */
+    opacity: 0.8;
     padding: 2%;
     width: 40%;
+    border: 1px solid blue;
+    box-shadow: inset 0px 0px 8px 1px #ffffff;
 }
 /* ---------------------------------------------------------------------------- */
 @media screen and (max-width: 970px) {
-    .icon img {
+    .details-icon img {
         height: 70px;
         width: 70px;
     }
 }
 @media screen and (max-width: 850px) {
-    #photo {
+    #details-photo {
         height: 344px;
     }
 }
 @media screen and (max-width: 780px) {
-    #photo {
+    #details-photo {
         height: 225px;
     }
-    #heading-main {
-        font-size: 35px;
+    #details-heading-main {
+        font-size: 31px;
     }
-    .icon img {
+    .details-icon img {
         height: 50px;
         width: 50px;
     }
-    #available {
+    #details-available {
         margin-top: 3%;
         margin-bottom: 5%;
     }
-    .btn {
+    .details-btn {
         width: 46%;
     }
 
