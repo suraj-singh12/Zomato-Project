@@ -32,7 +32,7 @@ const ListingDisplay = (props) => {
 
                 return listData.map((item) => {
                     return (
-                        <Link to="/" key={item.restaurant_id}>
+                        <Link to={`/details?restId=${item.restaurant_id}`} key={item.restaurant_id}>
                             <div className="listing-card">
                                 <div className="listing-card-upper">
                                     <div className="listing-image">
