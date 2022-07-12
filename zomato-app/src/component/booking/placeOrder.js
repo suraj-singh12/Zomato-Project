@@ -12,10 +12,10 @@ class PlaceOrder extends Component {
         this.state = {
             id: Math.floor(Math.random() * 100000),
             hotel_name: this.props.match.params.restName,
-            name: '',
-            email: '',
+            name: 'Fury-From-App',
+            email: 'fury@fury.com',
             cost: 0,
-            phone: '',
+            phone: '9876543210',
             address: 'H No26',
             menuItem: ''
         }
@@ -23,6 +23,25 @@ class PlaceOrder extends Component {
 
     checkout = () => {
         // here will make a call to api, to insert order details in database.
+        // we only need item ids instead of full data of them
+        
+        let obj = this.state;
+        // in sessionStorage 'menu' we only have the ids of the items user selected on details page.
+        obj.menuItem = sessionStorage.getItem('menu');
+        // now we have orderIds only, in menuItem, which makes it easy to make api call now.
+
+        fetch(purl, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+            // pushed the details of order by this user, into database.
+        })
+        .then(this.props.history.push('/viewBooking')); // redirecting to viewBooking page, after pushing order details in database.
+        // after hitting Place Order button on checkout page, I can view 
+        // the data pushed to my database here: https://app1api.herokuapp.com/orders
     }
 
     renderItem = (data) => {
