@@ -39,9 +39,7 @@ class RestDetails extends Component {
     // note: we cannot declare a variable like this
     // let a = 5; var b = 10; const c = 15; 
     // this is not allowed, 
-    // that's why we use state, also any update in state 
-    // triggers re-rendering of the component
-    // this is what we would definitely want.
+    
 
     constructor() {
         super();
