@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Merriweather:ital,wght@0,300;1,300&family=PT+Sans&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed:wght@300;400&display=swap');
 
-body {
+/* body {
     margin: auto;
     font-family: 'Hubballi', cursive;
-    background-color: #f1f6fb;
+    background-color: #f1f6fb; */
     /* font-family: 'Merriweather', serif;
     font-family: 'Playfair Display', serif;
     font-family: 'Poppins', sans-serif;
     font-family: 'PT Sans', sans-serif;
     font-family: 'Sansita Swashed', cursive; */
-}
+/* } */
 
 /* header section styling */
-#header {
+/* #header {
     background-color: #de986f;
     width: 100%;
     height: 55px;
@@ -34,93 +34,70 @@ body {
 }
 #social a {
     text-decoration: none;
-}
+} */
 /* ---------------------------------------------------------------------------- */
 
-#main-content {
+#details-main-content {
     margin-top: 4%;
     width: 90%;
     margin-left: 5%;
     display: inline-block;
     margin-bottom: 5%;
 }
-#photo {
+#details-photo {
     margin-left: 5%;
     width: 37%;
     height: 400px;
     float: left;
 }
-#photo img {
+#details-photo img {
     width: 100%;
     height: 100%;
     transition: transform 100ms;
 }
-#photo img:hover {
+#details-photo img:hover {
     transform: scale(1.1);
 }
-#content {
+#details-content {
     margin-left: 10%;
     width: 45%;
     float: left;
 }
-#heading-main {
+#details-heading-main {
     margin-top: 0;
     font-size: 44px;
 }
-.checked {
+.details-checked {
     color: red;
 }
-#content > h3 {
+#details-content > h3 {
     margin-top: 2%;
 }
-#icons {
+#details-icons {
     /* height: 150px; */
     /* border: 2px solid black; */
     width: 100%;
     display: inline-block;
 }
-.icon {
+.details-icon {
     float: left;
     margin-right: 5%; 
 }
-.icon p {
+.details-icon p {
     text-align: center;
 }
-.icon img {
+.details-icon img {
     width: 100px;
     height: 100px;
 }
-#available {
+#details-available {
     color: lightgreen;
     font-size: 38px;
 }
-.btn {
+.details-btn {
     background-color: #d5cbc9;
     padding: 2%;
     width: 40%;
-}
-/* ---------------------------------------------------------------------------- */
-/* footer styling */
-#footer {
-    /* background-color:cornflowerblue; */
-    /* border: 6px dotted brown; */
-    width: 100%;
-    height: 130px;
-    background-color: #e28b62;
-    font-family: 'PT Sans', sans-serif;
-}
-#footer a {
-    text-decoration: none;
-    color: black;
-}
-p {
-    text-align: center;
-}
-.footer-div {
-    width: 33%;
-    height: 60%;
-    border-right: 2px solid black;
-    float: left;
 }
 /* ---------------------------------------------------------------------------- */
 @media screen and (max-width: 970px) {

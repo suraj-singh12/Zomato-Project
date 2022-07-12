@@ -3,10 +3,10 @@
 
 // here we will use async await to call api
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import './details.css'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // 1. fetch way of calling  api
 /*
@@ -32,7 +32,7 @@ import {Link} from 'react-router-dom';
 
 // const url = 'https://app1api.herokuapp.com/details/5'
 // const menuUrl = 'https://app1api.herokuapp.com/menu/7'
-const url='https://app1api.herokuapp.com'
+const url = 'https://app1api.herokuapp.com'
 
 class RestDetails extends Component {
     // note: we cannot declare a variable like this
@@ -45,19 +45,51 @@ class RestDetails extends Component {
     constructor() {
         super();
 
-        this.state={
+        this.state = {
             details: '',        // details of the restaurant
             menuList: '',       // menu of the restaurant
-            userItem: '', 
-            mealId: sessionStorage.getItem('mealId')?sessionStorage.getItem('mealId'):'',         // which meal id you have selected.
+            userItem: '',
+            mealId: sessionStorage.getItem('mealId') ? sessionStorage.getItem('mealId') : '',         // which meal id you have selected.
         }
     }
 
     render() {
         return (
-            <>
-            {this.state.details.restaurant_name}
-            </>
+            <div id="details-main-content">
+                <div id="details-photo">
+                    <img src="https://i.ibb.co/2sHyZGg/snacks.png" alt="snacks" />
+                </div>
+                <div id="details-content">
+                    <h2 id="details-heading-main">Samosa Chatni Snacks (2Pcs)</h2>
+                    <i className="fa-regular fa-star checked"></i>
+                    <i className="fa-regular fa-star checked"></i>
+                    <i className="fa-regular fa-star checked"></i>
+                    <i className="fa-regular fa-star-half checked"></i>
+                    <span>231 Customers Rating</span>
+                    <h3>
+                        <strike>Old Price: 290</strike>
+                    </h3>
+                    <h3>New Price: 190</h3>
+                    <h3>Best Taste of Fresh Chai with Samosa At your Door or Dine In</h3>
+                    <div id="details-icons">
+                        <div className="details-icon">
+                            <img src="https://i.ibb.co/wJvrhYg/veg.png" alt="pure-veg" title="pure-veg" />
+                            <p>Pure Veg</p>
+                        </div>
+                        <div className="details-icon">
+                            <img src="https://i.ibb.co/mD3jpgc/sentizied.png" alt="fully-sanitized" title="fully-sanitized" />
+                            <p>Fully Sanitized</p>
+                        </div>
+                        <div className="details-icon">
+                            <img src="https://i.ibb.co/kHrm3Mh/delivery.png" alt="free-delivery" title="free-delivery" />
+                            <p>Free Delivery</p>
+                        </div>
+                    </div>
+                    <h2 id="details-available">Available</h2>
+                    <button className="details-btn btn">Add to Cart</button>
+                    <button className="details-btn btn">Checkout</button>
+                </div>
+            </div>
         )
     }
 
@@ -72,7 +104,7 @@ class RestDetails extends Component {
         // get the menu for given restaurantId
         let menu = await axios.get(`${url}/menu/${restId}`);
         // update the states of restaurantDetails, & menu
-        this.setState({details: response.data[0], menuList: menu.data});
+        this.setState({ details: response.data[0], menuList: menu.data });
     }
 }
 
