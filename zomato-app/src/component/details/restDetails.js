@@ -52,6 +52,11 @@ class RestDetails extends Component {
         }
     }
 
+
+    addToCart = (data) => {
+        this.setState({userItem: data});
+    }
+
     render() {
         // let details = this.state.details;
         let { details } = this.state;     // is equivalent to above one
@@ -93,7 +98,7 @@ class RestDetails extends Component {
                     </div>
                 </div>
                 <div className="details-menuDisplay">
-                    <MenuDisplay menudata={this.state.menuList}/>
+                    <MenuDisplay menudata={this.state.menuList} finalOrder={(data) => {this.addToCart(data)}}/>
                 </div>
             </div>
         )
