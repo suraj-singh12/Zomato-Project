@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './details.css'
 import { Link } from 'react-router-dom';
+import MenuDisplay from './menuDisplay';
 
 // 1. fetch way of calling  api
 /*
@@ -55,41 +56,46 @@ class RestDetails extends Component {
 
     render() {
         // let details = this.state.details;
-        let {details} = this.state;     // is equivalent to above one
+        let { details } = this.state;     // is equivalent to above one
         return (
-            <div id="details-main-content">
-                <div id="details-photo">
-                    <img src={this.state.details.restaurant_thumb} alt="snacks" />
-                </div>
-                <div id="details-content">
-                    <h2 id="details-heading-main">{details.restaurant_name}</h2>
-                    <i className="fa-regular fa-star checked"></i>
-                    <i className="fa-regular fa-star checked"></i>
-                    <i className="fa-regular fa-star checked"></i>
-                    <i className="fa-regular fa-star-half checked"></i>
-                    <span>231 Customers Rating is {details.rating_text}</span>
-                    <h4>
-                        <strike>Old Price: {details.cost + 240}</strike>
-                    </h4>
-                    <h4>New Price: {details.cost}</h4>
-                    <h4>Best Taste of Fresh Chai with Samosa At your Door or Dine In</h4>
-                    <div id="details-icons">
-                        <div className="details-icon">
-                            <img src="https://i.ibb.co/wJvrhYg/veg.png" alt="pure-veg" title="pure-veg" />
-                            <p>Pure Veg</p>
-                        </div>
-                        <div className="details-icon">
-                            <img src="https://i.ibb.co/mD3jpgc/sentizied.png" alt="fully-sanitized" title="fully-sanitized" />
-                            <p>Fully Sanitized</p>
-                        </div>
-                        <div className="details-icon">
-                            <img src="https://i.ibb.co/kHrm3Mh/delivery.png" alt="free-delivery" title="free-delivery" />
-                            <p>Free Delivery</p>
-                        </div>
+            <div>
+                <div id="details-main-content">
+                    <div id="details-photo">
+                        <img src={this.state.details.restaurant_thumb} alt="snacks" />
                     </div>
-                    <h2 id="details-isOpen">Currently Open</h2>
-                    <button className="details-btn btn btn-danger" style={{marginRight:'1%'}}>Back</button>
-                    <button className="details-btn btn btn-success">Checkout</button>
+                    <div id="details-content">
+                        <h2 id="details-heading-main">{details.restaurant_name}</h2>
+                        <i className="fa-regular fa-star checked"></i>
+                        <i className="fa-regular fa-star checked"></i>
+                        <i className="fa-regular fa-star checked"></i>
+                        <i className="fa-regular fa-star-half checked"></i>
+                        <span>231 Customers Rating is {details.rating_text}</span>
+                        <h4>
+                            <strike>Old Price: {details.cost + 240}</strike>
+                        </h4>
+                        <h4>New Price: {details.cost}</h4>
+                        <h4>Best Taste of Fresh Chai with Samosa At your Door or Dine In</h4>
+                        <div id="details-icons">
+                            <div className="details-icon">
+                                <img src="https://i.ibb.co/wJvrhYg/veg.png" alt="pure-veg" title="pure-veg" />
+                                <p>Pure Veg</p>
+                            </div>
+                            <div className="details-icon">
+                                <img src="https://i.ibb.co/mD3jpgc/sentizied.png" alt="fully-sanitized" title="fully-sanitized" />
+                                <p>Fully Sanitized</p>
+                            </div>
+                            <div className="details-icon">
+                                <img src="https://i.ibb.co/kHrm3Mh/delivery.png" alt="free-delivery" title="free-delivery" />
+                                <p>Free Delivery</p>
+                            </div>
+                        </div>
+                        <h2 id="details-isOpen">Currently Open</h2>
+                        <button className="details-btn btn btn-danger" style={{ marginRight: '1%' }}>Back</button>
+                        <button className="details-btn btn btn-success">Checkout</button>
+                    </div>
+                </div>
+                <div className="details-menuDisplay">
+                    <MenuDisplay menudata={this.state.menuList}/>
                 </div>
             </div>
         )

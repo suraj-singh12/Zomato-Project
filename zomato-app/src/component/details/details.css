@@ -71,6 +71,14 @@
     border: 1px solid blue;
     box-shadow: inset 0px 0px 8px 1px #ffffff;
 }
+.details-menuDisplay {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.details-menu-items-down {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 /* ---------------------------------------------------------------------------- */
 @media screen and (max-width: 970px) {
     .details-icon img {
