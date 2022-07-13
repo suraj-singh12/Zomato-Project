@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const ListingDisplay = (props) => {
     let bgColor = 'lightgreen';
     const getMealType = (mealTypes) => {
         return mealTypes.map((item) => {
             bgColor = (bgColor === 'lightgreen') ? 'orange' : 'lightgreen';
             return (
-                <span className="btn btn-sm" style={{ marginRight: '2%', backgroundColor: `${bgColor}` }}>{item.mealtype_name}</span>
+                <span className="btn btn-sm" style={{ marginRight: '2%', backgroundColor: `${bgColor}` }} key={Math.random() * 100000}>{item.mealtype_name}</span>
             )
         })
     }
@@ -17,7 +18,7 @@ const ListingDisplay = (props) => {
         return cuisines.map((item) => {
             bgColor = (bgColor === 'lightCoral') ? 'lightblue' : 'lightCoral';
             return (
-                <span className="btn btn-sm" style={{ marginRight: '2%', backgroundColor: `${bgColor}` }}>{item.cuisine_name}</span>
+                <span className="btn btn-sm" style={{ marginRight: '2%', backgroundColor: `${bgColor}` }} key={Math.random() * 100000}>{item.cuisine_name}</span>
             )
         })
     }

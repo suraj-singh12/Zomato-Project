@@ -104,10 +104,12 @@ class PlaceOrder extends Component {
                                 </label>
                             </div>
                         </div>
+                        
                         {/* render Items that user had selected */}
                         <div class="container" style={{display: 'inline-block', textAlign: 'center'}}>
                             {this.renderItem(this.state.menuItem)}
                         </div>
+
                         <div className="row" style={{ margin: '2%' }}>
                             <div className="col-md-9">
                                 <h3>Total Price is: {this.state.cost}</h3>
@@ -153,7 +155,7 @@ class PlaceOrder extends Component {
             .then((res) => res.json())
             .then((data) => {
                 // we will get data of all the items that user has selected.
-                console.log(data);
+                console.log("from placeOrder.js: ", data);
                 // after looking at the structure of output, now getting the total sum of costs of all items
                 let totalPrice = 0;
                 data.map((item) => {

@@ -2,9 +2,10 @@ import React from 'react';
 
 const OrderDisplay = (props) => {
     console.log(props);
+
     const renderTable = ({orderData}) => {
         if(orderData) {
-            console.log(orderData);
+            // console.log(orderData);
             return orderData.map((item) => {
                 return (
                     <tr key={item.id}>
