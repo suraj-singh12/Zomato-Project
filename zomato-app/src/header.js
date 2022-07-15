@@ -111,17 +111,18 @@ class Header extends Component {
                     <button onClick={this.handleLogout} className="btn" id="create-account">Logout</button>
                 </div>
             )
+        } else {
+            return (
+                <div id="account">
+                    <Link to="/login">
+                        <button className="btn" id="login">Login</button>
+                    </Link>
+                    <Link to="/register">
+                        <button className="btn" id="create-account">Create an Account</button>
+                    </Link>
+                </div>
+            )
         }
-        return (
-            <div id="account">
-                <Link to="/login">
-                    <button className="btn" id="login">Login</button>
-                </Link>
-                <Link to="/register">
-                    <button className="btn" id="create-account">Create an Account</button>
-                </Link>
-            </div>
-        )
     }
     render() {
         return (

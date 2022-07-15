@@ -13,17 +13,17 @@ class PlaceOrder extends Component {
         this.state = {
             id: Math.floor(Math.random() * 100000),
             hotel_name: this.props.match.params.restName,
-            name: sessionStorage.getItem('userInfo')?sessionStorage.getItem('userInfo').split(',')[0] : '',
-            email: sessionStorage.getItem('userInfo')?sessionStorage.getItem('userInfo').split(',')[1] : '',
+            name: sessionStorage.getItem('userInfo') ? sessionStorage.getItem('userInfo').split(',')[0] : '',
+            email: sessionStorage.getItem('userInfo') ? sessionStorage.getItem('userInfo').split(',')[1] : '',
             cost: 0,
-            phone: sessionStorage.getItem('userInfo')?sessionStorage.getItem('userInfo').split(',')[2] : '',
+            phone: sessionStorage.getItem('userInfo') ? sessionStorage.getItem('userInfo').split(',')[2] : '',
             address: 'H No26',
             menuItem: ''
         }
     }
 
     checkout = () => {
-        if(!this.state.cost) {
+        if (!this.state.cost) {
             console.log('cost is : NaN');
             alert('Cannot place an empty order! Please select atleast one item.');
             return;
@@ -75,59 +75,85 @@ class PlaceOrder extends Component {
     }
 
     render() {
-        return (
-            <>
-                <Header />
-                {/* // note it is important to have the name= field of all the below items same as in the state name
-                // because we use this for advantage in handleChange() */}
-                <div className="container-fluid" style={{ marginTop: '2%', marginBottom: '2%' }}>
-                    <div className="container" style={{ border: '1px solid lightblue', padding: '0', borderRadius: '10px' }}>
-                        <h2 style={{ backgroundColor: 'lightBlue', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
-                            Your order for {this.state.hotel_name}
-                        </h2>
-                        <div className="row" style={{ padding: '1%' }}>
-                            <div className="col-md-6">
-                                <label className="form-label" htmlFor="fname">Name:
-                                    <input type="text" id="fname" name="name" className="form-control"
-                                        value={this.state.name} onChange={this.handleChange} />
-                                </label>
-                            </div>
-                            <div className="col-md-6">
-                                <label className="form-label" htmlFor="email">Email:
-                                    <input type="email" id="email" name="email" className="form-control"
-                                        value={this.state.email} onChange={this.handleChange} />
-                                </label>
-                            </div>
-                            <div className="col-md-6">
-                                <label className="form-label" htmlFor="phone">Phone:
-                                    <input type="number" id="phone" name="phone" className="form-control"
-                                        value={this.state.phone} onChange={this.handleChange} />
-                                </label>
-                            </div>
-                            <div className="col-md-6">
-                                <label className="form-label" htmlFor="address">Address:
-                                    <input type="text" id="address" name="address" className="form-control"
-                                        value={this.state.address} onChange={this.handleChange} />
-                                </label>
-                            </div>
-                        </div>
+        // in sessionStorage everything is stored in the form of string, so even we set boolean false when user is not logged in, 
+        // but in sessionStorage it is stored as a string. So compare with string false.
+        
+        // for loginStatus to be present in sessionStorage, atleast one user must have logged in and then logged out before.
+        // so if no user has logged in & we come on this page, then sessionStorage.getItem('loginStatus') will be null.
+        // !sessionStorage.getItem('loginStatus') will take care of this case.
+        // and sessionStorage.getItem('loginStatus') === 'false' will take care of other normal cases.
 
-                        {/* render Items that user had selected */}
-                        <div className="container" style={{ display: 'inline-block', textAlign: 'center' }}>
-                            {this.renderItem(this.state.menuItem)}
-                        </div>
+        console.log('loginStatus: ', sessionStorage.getItem('loginStatus'));
+        if (!sessionStorage.getItem('loginStatus') || sessionStorage.getItem('loginStatus') === 'false') {
+            /* if the user is not logged in then we don't want him to reach this page,
+             * because only a logged in user can make an order */
 
-                        <div className="row" style={{ margin: '2%' }}>
-                            <div className="col-md-9">
-                                <h3>Total Price is: {this.state.cost}</h3>
-                            </div>
-                            <button className="btn btn-success col-md-2" onClick={this.checkout}>Place Order</button>
-                        </div>
+            console.log('inside if: ')
+            return (
+                <>
+                    <Header />
+                    <div className="container" style={{textAlign: 'center', padding: '2%', color:'blue'}}>
+                        <h3>
+                            Login First to Place Order
+                        </h3>
                     </div>
-                    <hr />
-                </div>
-            </>
-        )
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Header />
+                    {/* // note it is important to have the name= field of all the below items same as in the state name
+                        // because we use this for advantage in handleChange() */}
+                    <div className="container-fluid" style={{ marginTop: '2%', marginBottom: '2%' }}>
+                        <div className="container" style={{ border: '1px solid lightblue', padding: '0', borderRadius: '10px' }}>
+                            <h2 style={{ backgroundColor: 'lightBlue', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
+                                Your order for {this.state.hotel_name}
+                            </h2>
+                            <div className="row" style={{ padding: '1%' }}>
+                                <div className="col-md-6">
+                                    <label className="form-label" htmlFor="fname">Name:
+                                        <input type="text" id="fname" name="name" className="form-control"
+                                            value={this.state.name} onChange={this.handleChange} />
+                                    </label>
+                                </div>
+                                <div className="col-md-6">
+                                    <label className="form-label" htmlFor="email">Email:
+                                        <input type="email" id="email" name="email" className="form-control"
+                                            value={this.state.email} onChange={this.handleChange} />
+                                    </label>
+                                </div>
+                                <div className="col-md-6">
+                                    <label className="form-label" htmlFor="phone">Phone:
+                                        <input type="number" id="phone" name="phone" className="form-control"
+                                            value={this.state.phone} onChange={this.handleChange} />
+                                    </label>
+                                </div>
+                                <div className="col-md-6">
+                                    <label className="form-label" htmlFor="address">Address:
+                                        <input type="text" id="address" name="address" className="form-control"
+                                            value={this.state.address} onChange={this.handleChange} />
+                                    </label>
+                                </div>
+                            </div>
+
+                            {/* render Items that user had selected */}
+                            <div className="container" style={{ display: 'inline-block', textAlign: 'center' }}>
+                                {this.renderItem(this.state.menuItem)}
+                            </div>
+
+                            <div className="row" style={{ margin: '2%' }}>
+                                <div className="col-md-9">
+                                    <h3>Total Price is: {this.state.cost}</h3>
+                                </div>
+                                <button className="btn btn-success col-md-2" onClick={this.checkout}>Place Order</button>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                </>
+            )
+        }
     }
 
     // call api & get the details of the menu that user has selected.
