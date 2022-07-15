@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './listing.css';
 import ListingDisplay from './listingDisplay';
+import CuisineFilter from '../filters/cuisineFilter';
 
 const url = "https://app1api.herokuapp.com/restaurants";
 
@@ -19,6 +20,12 @@ class Listing extends Component {
         this.state = {
             restaurants: ""
         }
+    }
+
+    // when a filter is applied, this function is called, this updates the state of restaurants
+    // & then this component re-renders with updated restaurants.
+    setDataPerFilter = (data) => {
+        this.setState({ restaurants: data });
     }
 
     render() {
@@ -42,24 +49,14 @@ class Listing extends Component {
                             </select>
                         </div>
                         {/* <!-- cuisine --> */}
-                        <div className="listing-sub-heading">
-                            <p>Cuisine</p>
-                            <label htmlFor="north-indian">
-                                <input type="checkbox" id="north-indian" />North Indian
-                            </label>
-                            <label htmlFor="south-indian">
-                                <input type="checkbox" id="south-indian" />South Indian
-                            </label>
-                            <label htmlFor="chinese">
-                                <input type="checkbox" id="chinese" />Chinese
-                            </label>
-                            <label htmlFor="fast-food">
-                                <input type="checkbox" id="fast-food" />Fast Food
-                            </label>
-                            <label htmlFor="street-food">
-                                <input type="checkbox" id="street-food" />Street Food
-                            </label>
-                        </div>
+                        {/* sending mealId to CuisineFilter, & that will return the sorted data
+                        and here we receive that sorted data in restPerCuisine which on receive 
+                        calls the function setDataPerFilter() with that data, that function updates the state of restaurant data here. 
+                        and the component re-renders with updated data*/}
+                        <CuisineFilter mealId={this.props.match.params.id}
+                        restPerCuisine={(data) => {this.setDataPerFilter(data)}}/>
+
+                        
                         {/* <!-- cost --> */}
                         <div className="listing-sub-heading">
                             <p>Cost For Two </p>

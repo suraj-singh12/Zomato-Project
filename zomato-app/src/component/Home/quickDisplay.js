@@ -6,7 +6,7 @@ const QuickDisplay = (props) => {
     console.log(props);
 
     // check in productDisplay in firstApp, there we did this way
-    // props.prodData.map((item) => {...}; i.e. props.properyName.map((item) => {...}))
+    // props.prodData.map((item) => {...}; i.e. props.propertyName.map((item) => {...}))
     // but below is another way of doing this 
     const listMeal = ({ mealData }) => {
         if (mealData) {
