@@ -17,7 +17,8 @@ class Login extends Component {
 
         this.state = {
             name: '',
-            email: ''
+            email: '',
+            message: ''
         }
     }
 
@@ -32,7 +33,8 @@ class Login extends Component {
         //  so we are basically using the same names to our advantage.
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();     // stop page from reloading (due to form submit)
         // here will make a call to api, to register the user.
         fetch(url, {
             method: 'POST',
@@ -41,10 +43,26 @@ class Login extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
-            // pushed the details of user, into database.
         })
-            .then(this.props.history.push('/login')); // redirecting to login, after user is registered.
+            .then((res) => res.json())
+            .then((data) => {
+                // if email is not registered, or password is incorrect, then set the error message to display.
+                console.log('data: ', data)
+                if (data.auth === false) {
+                    this.setState({ message: data.token });
+                } else {
+                    // user is a registered user, & password is correct then proceed, login him,
+                    // and save the token we get from api, which allows accessing user info to us, 
+                    // for a limited time period (set in the API code) after which token becomes invalid.
+
+                    // save the token 
+                    sessionStorage.setItem('ltk', data.token);
+                    // ltk: login token
+                    this.props.history.push('/');   // redirect user to home page.
+                }
+            })
     }
+
 
     render() {
         return (
@@ -55,20 +73,23 @@ class Login extends Component {
                         <h2 style={{ backgroundColor: 'lightgreen', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
                             Login
                         </h2>
+                        <h2 className="message" style={{ color: "red", textAlign: 'center' }}>{this.state.message}</h2>
                         <div className="row" style={{ padding: '1%' }}>
+
                             <div className="col-md-6">
-                                <label className="form-label" htmlFor="email">Email:
-                                    <input type="email" id="email" name="email" className="form-control"
-                                        value={this.state.email} onChange={this.handleChange} required />
-                                </label>
+                                <label className="form-label" htmlFor="email">Email:</label>
+                                <input type="email" id="email" name="email" className="form-control"
+                                    value={this.state.email} onChange={this.handleChange} required />
                             </div>
+
                             <div className="col-md-6">
-                                <label className="form-label" htmlFor="password">Password:
-                                    <input type="password" id="password" name="password" className="form-control"
-                                        value={this.state.address} onChange={this.handleChange} required />
-                                </label>
+                                <label className="form-label" htmlFor="password">Password:</label>
+                                <input type="password" id="password" name="password" className="form-control"
+                                    value={this.state.address} onChange={this.handleChange} required />
                             </div>
+
                         </div>
+
                         <button className="btn btn-warning" type="submit" style={{ margin: "2% 90%" }}>Login</button>
                     </div>
                 </form>

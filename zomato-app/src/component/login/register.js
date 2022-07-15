@@ -46,7 +46,8 @@ class Register extends Component {
             body: JSON.stringify(this.state)
             // pushed the details of user, into database.
         })
-        .then(this.props.history.push('/login')); // redirecting to login, after user is registered.
+            .then(this.props.history.push('/login')); // redirecting to login, after user is registered.
+        // for dev purpose, all registered users can be seen here: https://loginappapi.herokuapp.com/api/auth/users 
     }
 
     render() {
@@ -60,31 +61,27 @@ class Register extends Component {
                         </h2>
                         <div className="row" style={{ padding: '1%' }}>
                             <div className="col-md-6">
-                                <label className="form-label" htmlFor="fname">Name:
-                                    <input type="text" id="fname" name="name" className="form-control"
-                                        value={this.state.name} onChange={this.handleChange} required />
-                                </label>
+                                <label className="form-label" htmlFor="fname">Name:</label>
+                                <input type="text" id="fname" name="name" className="form-control"
+                                    value={this.state.name} onChange={this.handleChange} required />
                             </div>
                             <div className="col-md-6">
-                                <label className="form-label" htmlFor="email">Email:
-                                    <input type="email" id="email" name="email" className="form-control"
-                                        value={this.state.email} onChange={this.handleChange} required />
-                                </label>
+                                <label className="form-label" htmlFor="email">Email:</label>
+                                <input type="email" id="email" name="email" className="form-control"
+                                    value={this.state.email} onChange={this.handleChange} required />
                             </div>
                             <div className="col-md-6">
-                                <label className="form-label" htmlFor="password">Password:
-                                    <input type="password" id="password" name="password" className="form-control"
-                                        value={this.state.address} onChange={this.handleChange} required />
-                                </label>
+                                <label className="form-label" htmlFor="password">Password:</label>
+                                <input type="password" id="password" name="password" className="form-control"
+                                    value={this.state.address} onChange={this.handleChange} required />
                             </div>
                             <div className="col-md-6">
-                                <label className="form-label" htmlFor="phone">Phone:
-                                    <input type="phone" id="phone" name="phone" className="form-control"
-                                        value={this.state.phone} onChange={this.handleChange} required />
-                                </label>
+                                <label className="form-label" htmlFor="phone">Phone:</label>
+                                <input type="phone" id="phone" name="phone" className="form-control"
+                                    value={this.state.phone} onChange={this.handleChange} required />
                             </div>
                         </div>
-                    <button className="btn btn-success" type="submit" style={{ margin:"2% 90%"}}>Register</button>
+                        <button className="btn btn-success" type="submit" style={{ margin: "2% 90%" }}>Register</button>
                     </div>
                 </form>
             </>
