@@ -10,6 +10,7 @@ import axios from 'axios';
 import './listing.css';
 import ListingDisplay from './listingDisplay';
 import CuisineFilter from '../filters/cuisineFilter';
+import CostFilter from '../filters/costFilter';
 
 const url = "https://app1api.herokuapp.com/restaurants";
 
@@ -25,7 +26,7 @@ class Listing extends Component {
     // when a filter is applied, this function is called, this updates the state of restaurants
     // & then this component re-renders with updated restaurants.
     setDataPerFilter = (data) => {
-        console.log('Data received in listing from cuisineFilter: ', data);
+        console.log('Data received in listing from cuisineFilter/costFilter: ', data);
         this.setState({ restaurants: data });
     }
 
@@ -49,7 +50,9 @@ class Listing extends Component {
                                 <option value="mumbai">Mumbai</option>
                             </select>
                         </div>
+                        
                         {/* <!-- cuisine --> */}
+
                         {/* sending mealId to CuisineFilter, & that will return the sorted data
                         and here we receive that sorted data in restPerCuisine which on receive 
                         calls the function setDataPerFilter() with that data, that function updates the state of restaurant data here. 
@@ -59,24 +62,13 @@ class Listing extends Component {
 
 
                         {/* <!-- cost --> */}
-                        <div className="listing-sub-heading">
-                            <p>Cost For Two </p>
-                            <label htmlFor="L500">
-                                <input type="radio" name="cost" value="L500" id="L500" /> Less than 500
-                            </label>
-                            <label htmlFor="500to1000">
-                                <input type="radio" name="cost" value="500-100" id="500to1000" /> 500 to 1000
-                            </label>
-                            <label htmlFor="1000to1500">
-                                <input type="radio" name="cost" value="1000-1500" id="1000to1500" /> 1000 - 1500
-                            </label>
-                            <label htmlFor="1500to2000">
-                                <input type="radio" name="cost" value="1500-2000" id="1500to2000" /> 1500 - 2000
-                            </label>
-                            <label htmlFor="2000plus">
-                                <input type="radio" name="cost" value="2000 plus" id="2000plus" /> 2000+
-                            </label>
-                        </div>
+                        
+                        {/* not passing mealId, will take it from sessionStorage,
+                        could've sent also mealId from here, but, just doing it another way. */}
+                        <CostFilter 
+                        restPerCost={(data) => {this.setDataPerFilter(data)}}/>
+                        
+
                         {/* <!-- sort according to cost --> */}
                         <div id="listing-sort">
                             <p>Sort</p>
