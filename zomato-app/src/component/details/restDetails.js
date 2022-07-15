@@ -60,18 +60,7 @@ class RestDetails extends Component {
 
     addToCart = (data) => {
         console.log('received data: ', data);
-
-        // if upcoming cart is bigger than current one, (only possible when nothing was found in cart from the sessionStorage during componentDidMount)
-        if (this.state.userItem.length <= data.length) {
-            this.setState({ userItem: data });
-        } else {
-            // else cart has already some items from sessionStorage, so update this cart, don't set exactly to incoming data
-            let cart_items = this.state.userItem;
-            data.map((item) => {
-                cart_items.push(item);
-            })
-            this.setState({ userItem: cart_items });
-        }
+        this.setState({ userItem: data });
     }
 
     // on clicking the checkout button
@@ -143,6 +132,7 @@ class RestDetails extends Component {
                 {/* display bottom menu (menu of this restaurant) */}
                 <div className="details-menuDisplay">
                     <MenuDisplay menudata={this.state.menuList} previousOrders={this.state.userItem} finalOrder={(data) => { this.addToCart(data) }} />
+                    {/* sending userItem, so if there is already something in cart of this restaurant, it will be shown added. */}
                 </div>
             </div>
         )

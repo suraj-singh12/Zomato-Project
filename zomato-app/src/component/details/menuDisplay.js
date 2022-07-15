@@ -41,15 +41,8 @@ class MenuDisplay extends Component {
                     <b key={index}>{item} &nbsp;</b>
                     )
                 })
-        } else if(this.props.previousOrders) {
-            console.log('orders already present in cart to render are: ', this.props.previousOrders);
-            return this.props.previousOrders.map((item, index) => {
-                return (
-                    <b key={index}>{item} &nbsp;</b>
-                    )
-                })
-            }
-        }
+        } 
+    }
     
     renderMenu = ({ menudata }) => {
         if (menudata) {
@@ -78,6 +71,10 @@ class MenuDisplay extends Component {
     };
 
     render() {
+        // if there were previously items added by user, from this restaurant, then update them here.
+        if(this.props.previousOrders.length > 0)
+            this.orderId = this.props.previousOrders;
+        
         return (
             <div className="container">
                 <div className="col-md-12 bg-success details-menu-items-down">
