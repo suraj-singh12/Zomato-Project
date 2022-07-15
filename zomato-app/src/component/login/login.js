@@ -48,7 +48,7 @@ class Login extends Component {
             .then((res) => res.json())
             .then((data) => {
                 // if email is not registered, or password is incorrect, then set the error message to display.
-                console.log('data: ', data)
+                // console.log('data: ', data)
                 if (data.auth === false) {
                     this.setState({ message: data.token });
                 } else {
@@ -61,7 +61,7 @@ class Login extends Component {
                     // ltk: login token
 
 
-                    this.props.history.push('/');   // redirect user to home page.
+                    this.props.history.push(sessionStorage.getItem('last_page'));   // redirect user to his last visited page on website.
                 }
             })
     }

@@ -39,10 +39,15 @@ class RestDetails extends Component {
     // note: we cannot declare a variable like this
     // let a = 5; var b = 10; const c = 15; 
     // this is not allowed, 
-    
+
 
     constructor(props) {
         super(props);
+
+        // save the location of current page(except login/register/placeOrder/viewOrder pages, we do this on all pages[home, listing, details]) as last visited page; will use it to when non-logged in user logs in; will redirect him to his previous page (before login)
+        let last_page_address = this.props.match.url + this.props.location.search;
+        sessionStorage.setItem('last_page', last_page_address);
+        console.log('last visited page set to: ', sessionStorage.getItem('last_page'));
 
         this.state = {
             details: '',        // details of the restaurant
@@ -54,13 +59,25 @@ class RestDetails extends Component {
 
 
     addToCart = (data) => {
-        this.setState({userItem: data});
+        console.log('received data: ', data);
+
+        // if upcoming cart is bigger than current one, (only possible when nothing was found in cart from the sessionStorage during componentDidMount)
+        if (this.state.userItem.length <= data.length) {
+            this.setState({ userItem: data });
+        } else {
+            // else cart has already some items from sessionStorage, so update this cart, don't set exactly to incoming data
+            let cart_items = this.state.userItem;
+            data.map((item) => {
+                cart_items.push(item);
+            })
+            this.setState({ userItem: cart_items });
+        }
     }
 
     // on clicking the checkout button
     proceed = () => {
         // if no item is added to cart, we cannot proceed then
-        if(!this.state.userItem) {
+        if (!this.state.userItem) {
             console.log('userItem is :', this.state.userItem);
             alert('Cannot place an empty order! Please select at least one item.');
             return;
@@ -74,7 +91,11 @@ class RestDetails extends Component {
     }
 
     goBack = () => {
-        this.props.history.push(sessionStorage.getItem('checkout_back'));
+        if (!sessionStorage.getItem('checkout_back')) {
+            this.props.history.push('/');           // if nothing in session storage, then send back to home page
+        } else {
+            this.props.history.push(sessionStorage.getItem('checkout_back'));
+        }
     }
 
 
@@ -121,7 +142,7 @@ class RestDetails extends Component {
                 </div>
                 {/* display bottom menu (menu of this restaurant) */}
                 <div className="details-menuDisplay">
-                    <MenuDisplay menudata={this.state.menuList} finalOrder={(data) => {this.addToCart(data)}}/>
+                    <MenuDisplay menudata={this.state.menuList} previousOrders={this.state.userItem} finalOrder={(data) => { this.addToCart(data) }} />
                 </div>
             </div>
         )
@@ -139,6 +160,36 @@ class RestDetails extends Component {
         let menu = await axios.get(`${url}/menu/${restId}`);
         // update the states of restaurantDetails, & menu
         this.setState({ details: response.data[0], menuList: menu.data });
+
+
+
+        // checking if there is something in the cart of this restaurant already (added by non-logged in user)
+        if (sessionStorage.getItem('menu')) {
+            console.log('inside menu')
+            // i.e. if there is already something in cart (added by non-logged in user)
+            // then after he logs in, check the cart, & add these items there.
+            // ensure to erase the items once user logs out.
+
+            let orderId = [];
+            let current_rest_id = this.props.location.search.charAt(this.props.location.search.length - 1);
+            console.log('current restaurant_id: ', current_rest_id);
+            if (current_rest_id === sessionStorage.getItem('restOfMenu')) {
+                console.log('Items found in cart of this restaurant.')
+                // if we are on the same restaurant to whom these items belong then
+                sessionStorage.getItem('menu').split(',').map((item) => {
+                    // push only when the item is not in array (avoiding duplicates)
+                    if (orderId.indexOf(parseInt(item)) === -1) {
+                        orderId.push(parseInt(item));
+                    }
+                    return 'ok';
+                })
+                // update the orders
+                this.addToCart(orderId);
+            } else {
+                console.log('No Item found in cart of this restaurant.')
+                // if we are on a different restaurant to whom these items belong then
+            }
+        }
     }
 }
 

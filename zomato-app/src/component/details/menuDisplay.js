@@ -8,6 +8,10 @@ class MenuDisplay extends Component {
 
     placeOrder = (id) => {
         this.orderId.push(id);
+        sessionStorage.setItem('restOfMenu', this.props.menudata[0].restaurant_id); //save the restaurant id of this restaurant
+        // so that when user comes back to this restaurant, he will find the items already added to cart.
+        // if he had placed order the items won't remain in list anymore, if he had removed them then too they would find nothing in cart.
+
         this.props.finalOrder(this.orderId);  // this will be received by the parent component (in restDetails) 
         // and there our finalOrder function calls the addToCart function, which updates the userItem state
     }
@@ -31,14 +35,21 @@ class MenuDisplay extends Component {
     }
 
     renderCart = (orders) => {
-        if(orders) {
+        if(orders.length > 0) {
             return orders.map((item, index) => {
                 return (
                     <b key={index}>{item} &nbsp;</b>
-                )
-            })
+                    )
+                })
+        } else if(this.props.previousOrders) {
+            console.log('orders already present in cart to render are: ', this.props.previousOrders);
+            return this.props.previousOrders.map((item, index) => {
+                return (
+                    <b key={index}>{item} &nbsp;</b>
+                    )
+                })
+            }
         }
-    }
     
     renderMenu = ({ menudata }) => {
         if (menudata) {
