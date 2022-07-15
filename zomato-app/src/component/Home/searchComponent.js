@@ -66,6 +66,34 @@ class Search extends Component {
             ))
     }
 
+    // on selecting restaurant corresponding to selected city, redirect user to detail page of that restaurant
+    handleRestaurant = (event) => {
+        const restId = event.target.value;
+        this.props.history.push(`/details?restId=${restId}`);   // redirecting
+        // if it says "Cannot read properties of undefined (reading 'push')" (in console of browser)
+        // then look one level below, i.e. .history , that means history is not available here.
+
+        /**
+         * if you check in Home component, default props are available, but if you check here in searchComponent they are not present.
+         * Why?
+         * Because default props are not available in child components.
+         * and searchComponent is a child component of Home.
+         * 
+         * see these lines in home: 
+         * import Search from './searchComponent';
+         * return (
+                <>
+                    <Search />
+                    <QuickSearch />
+                </>
+            )
+         * 
+         * Only the components present in Route under BrowserRouter has access to default props
+         * because they are not child of any component. They are main/parent components.
+         * (check routing.js; all components that are present in Route, are parent & all of them (only them) has access to default props)
+         */
+    }
+
     style = {
         cityDropdown: {
             position: 'relative',
@@ -82,6 +110,7 @@ class Search extends Component {
     }
 
     render() {
+        console.log('>>>>searchComponent ', this.props);
         return (
             <>
                 <div className="container-fluid text-center food-img">
@@ -93,7 +122,7 @@ class Search extends Component {
                     <div></div>
 
                     <div className="dropdown dropdown-enhancement">
-                        
+
                         {/* call handleCity() whenever user chooses any city from dropdown
                         so that we will display restaurant based on that */}
                         <select onChange={this.handleCity} style={this.style.cityDropdown} className="dropdown-toggle">
@@ -102,7 +131,7 @@ class Search extends Component {
                             {this.renderCity(this.state.location)}
                         </select>
 
-                        <select style={this.style.cityDropdown} className="dropdown-toggle">
+                        <select onChange={this.handleRestaurant} style={this.style.cityDropdown} className="dropdown-toggle">
                             <option>----Select Your Restaurant----</option>
                             {/* get the restaurant names rendered here */}
                             {this.renderRest(this.state.restaurants)}
