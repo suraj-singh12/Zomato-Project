@@ -8,7 +8,7 @@ const url = 'https://app1api.herokuapp.com/orders';
 class ViewOrder extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             orders: ''
         }
@@ -40,10 +40,21 @@ class ViewOrder extends Component {
         // this ensures we give ample time between both calls & updated data is received.
 
         // getting all orders from api
-        axios.get(url, { method: 'GET' })
-            .then((res) => {
-                this.setState({ orders: res.data });
-            })
+        // axios.get(url, { method: 'GET' })
+        //     .then((res) => {
+        //         this.setState({ orders: res.data });
+        //     })
+
+        // get only current user's orders from API
+        let email = sessionStorage.getItem('userInfo').split(',')[1];
+        console.log('info: ', sessionStorage.getItem('userInfo'));
+        console.log(`${url}?email=${email}`);
+
+        axios.get(`${url}?email=${email}`)
+        .then((res) => {
+            this.setState({orders: res.data});
+        })
+
         // fetch(url, {method: 'GET'})
         // .then((res) => res.json()) 
         // .then((data) => {

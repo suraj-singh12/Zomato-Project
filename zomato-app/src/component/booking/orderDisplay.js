@@ -8,7 +8,7 @@ const OrderDisplay = (props) => {
             // console.log(orderData);
             return orderData.map((item) => {
                 return (
-                    <tr key={item.id}>
+                    <tr key={item._id}>
                         <td>{item.id}</td>
                         <td>{item.hotel_name}</td>
                         <td>{item.name}</td>
