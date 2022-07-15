@@ -59,6 +59,8 @@ class Login extends Component {
                     // save the token 
                     sessionStorage.setItem('ltk', data.token);
                     // ltk: login token
+
+
                     this.props.history.push('/');   // redirect user to home page.
                 }
             })
@@ -75,6 +77,7 @@ class Login extends Component {
                             Login
                         </h2>
                         <h2 className="message" style={{ color: "red", textAlign: 'center' }}>{this.state.message}</h2>
+                        
                         <div className="row" style={{ padding: '1%' }}>
 
                             <div className="col-md-6">

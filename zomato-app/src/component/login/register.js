@@ -35,7 +35,9 @@ class Register extends Component {
         //  so we are basically using the same names to our advantage.
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault(); // prevent  the page from refreshing due to form submit.
+
         // here will make a call to api, to register the user.
         fetch(url, {
             method: 'POST',
@@ -46,7 +48,10 @@ class Register extends Component {
             body: JSON.stringify(this.state)
             // pushed the details of user, into database.
         })
-            .then(this.props.history.push('/login')); // redirecting to login, after user is registered.
+            .then(() => {
+                alert('User Registered successfully'); 
+                this.props.history.push('/login');
+            }); // redirecting to login, after user is registered.
         // for dev purpose, all registered users can be seen here: https://loginappapi.herokuapp.com/api/auth/users 
     }
 
