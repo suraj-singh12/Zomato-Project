@@ -25,6 +25,7 @@ class Listing extends Component {
     // when a filter is applied, this function is called, this updates the state of restaurants
     // & then this component re-renders with updated restaurants.
     setDataPerFilter = (data) => {
+        console.log('Data received in listing from cuisineFilter: ', data);
         this.setState({ restaurants: data });
     }
 
@@ -56,7 +57,7 @@ class Listing extends Component {
                         <CuisineFilter mealId={this.props.match.params.id}
                         restPerCuisine={(data) => {this.setDataPerFilter(data)}}/>
 
-                        
+
                         {/* <!-- cost --> */}
                         <div className="listing-sub-heading">
                             <p>Cost For Two </p>

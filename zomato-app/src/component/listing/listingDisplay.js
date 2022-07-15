@@ -28,7 +28,7 @@ const ListingDisplay = (props) => {
         // if data has arrived (means api has been called), then render the data
         if (listData) {
 
-            console.log(listData);
+            console.log('Data recieved in listingDisplay:' , listData);
             if (listData.length > 0) {
 
                 return listData.map((item) => {
