@@ -24,6 +24,8 @@ header {
 #icon > p {
     margin-top: 3%;
     font-size: 30px;
+    cursor: pointer;        
+    /* cursor: pointer; makes the pointer to change to hand on hovering over icon>p */
 }
 /* social links (header of the page) */
 #account {
@@ -40,12 +42,14 @@ header {
 #login {
     color: white;
     margin-right: 10%;
+    cursor: pointer;
 }
 #create-account {
     color: white;
     border: 1px solid white;
     border-radius: 4px;
     padding: 3px;
+    cursor: pointer;
 }
 
 /* old css; of no use */

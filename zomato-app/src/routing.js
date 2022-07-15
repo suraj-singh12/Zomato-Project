@@ -6,6 +6,8 @@ import Details from './component/details/restDetails';
 import PlaceOrder from './component/booking/placeOrder';
 import ViewOrder from './component/booking/viewOrder';
 import Footer from './footer';
+import Login from './component/login/login';
+import Register from './component/login/register';
 
 const Routing = () => {
     return (
@@ -22,6 +24,8 @@ const Routing = () => {
             {/* using params in /placeOrder (see :restName) */}
             <Route path="/placeOrder/:restName" component={PlaceOrder} />
             <Route path="/viewBooking" component={ViewOrder} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
 
             <Footer />
         </BrowserRouter>

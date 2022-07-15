@@ -3,16 +3,26 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 
 class Header extends Component {
+
+    conditionalHeader = () => {
+        return (
+            <div id="account">
+                <Link to="/login"><p id="login">Login</p></Link>
+                <Link to="/register"><p id="create-account">Create an account</p></Link>
+            </div>
+        )
+    }
     render() {
         return (
             <>
                 {/* add light / dark mode later */}
                 <header>
-                    <Link to="/"><div id="icon"><p>e!</p></div></Link>
-                    <div id="account">
-                        <Link to="/"><p id="login">Login</p></Link>
-                        <Link to="/"><p id="create-account">Create an account</p></Link>
-                    </div>
+                    <Link to="/">
+                        <div id="icon">
+                            <p>e!</p>
+                        </div>
+                    </Link>
+                    {this.conditionalHeader()}
                 </header>
             </>
         )
