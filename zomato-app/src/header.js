@@ -40,7 +40,7 @@ class Header extends Component {
             return (
                 <div id="account">
                     <Link to="/">
-                        <button className="btn" id="login"><i class="bi bi-person-circle"></i> Hi {data.name}</button   >
+                        <button className="btn" id="login"><i className="bi bi-person-circle"></i> Hi {data.name}</button   >
                     </Link>
                     <button onClick={this.handleLogout} className="btn" id="create-account">Logout</button>
                 </div>

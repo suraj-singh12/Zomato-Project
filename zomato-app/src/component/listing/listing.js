@@ -134,7 +134,13 @@ class Listing extends Component {
         sessionStorage.setItem('mealId', mealId);
         console.log(mealId);
         console.log(this.props);
+        // history: for redirection 
+        //location: queryparam
+        //match: params
 
+
+        // set the current url in for checkout_back button (on restDetails page) to work
+        sessionStorage.setItem('checkout_back', this.props.match.url);
         // calling api
         axios.get(`${url}?mealId=${mealId}`)
             .then(res => {

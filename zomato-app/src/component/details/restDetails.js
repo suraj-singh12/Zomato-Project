@@ -42,8 +42,8 @@ class RestDetails extends Component {
     // this is not allowed, 
     
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             details: '',        // details of the restaurant
@@ -60,13 +60,24 @@ class RestDetails extends Component {
 
     // on clicking the checkout button
     proceed = () => {
+        // if no item is added to cart, we cannot proceed then
+        if(!this.state.userItem) {
+            console.log('userItem is :', this.state.userItem);
+            alert('Cannot place an empty order! Please select atleast one item.');
+            return;
+        }
         // save the state of menu userItems on pressing checkout button
         // because we will require it on next page 
         sessionStorage.setItem('menu', this.state.userItem);
-        
+
         // now jump to the page /placeOrder page
         this.props.history.push(`/placeOrder/${this.state.details.restaurant_name}`);
     }
+
+    goBack = () => {
+        this.props.history.push(sessionStorage.getItem('checkout_back'));
+    }
+
 
     render() {
         // let details = this.state.details;
@@ -105,10 +116,11 @@ class RestDetails extends Component {
                             </div>
                         </div>
                         <h2 id="details-isOpen">Currently Open</h2>
-                        <button className="details-btn btn btn-danger" style={{ marginRight: '1%' }}>Back</button>
+                        <button className="details-btn btn btn-danger" onClick={this.goBack} style={{ marginRight: '1%' }}>Back</button>
                         <button className="details-btn btn btn-success" onClick={this.proceed}>Checkout</button>
                     </div>
                 </div>
+                {/* display bottom menu (menu of this restaurant) */}
                 <div className="details-menuDisplay">
                     <MenuDisplay menudata={this.state.menuList} finalOrder={(data) => {this.addToCart(data)}}/>
                 </div>
