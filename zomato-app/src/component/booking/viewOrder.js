@@ -34,7 +34,7 @@ class ViewOrder extends Component {
                     <Header />
                     <div className="container" style={{ textAlign: 'center', padding: '2%', color: 'blue' }}>
                         <h3>
-                            Login First to Place Order
+                            Login First to View Order
                         </h3>
                     </div>
                 </>
@@ -56,7 +56,10 @@ class ViewOrder extends Component {
 
     // calling api to get all orders information
     async componentDidMount() {
-
+        if (!sessionStorage.getItem('loginStatus') || sessionStorage.getItem('loginStatus') === 'false') {
+            // if user is not logged in then nothing to fetch from api
+            return;
+        }
         await this.timeout(500);      // wait for 0.5 seconds
         // because this component (viewOrder.js) is called just after the post api
         // that posted the user orders in the database in placeOrder.js
