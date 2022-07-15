@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './search.css';
+import {withRouter} from 'react-router-dom';
 
 const url = "https://app1api.herokuapp.com/location";
 const restUrl = "https://app1api.herokuapp.com/restaurants";
@@ -91,6 +92,10 @@ class Search extends Component {
          * Only the components present in Route under BrowserRouter has access to default props
          * because they are not child of any component. They are main/parent components.
          * (check routing.js; all components that are present in Route, are parent & all of them (only them) has access to default props)
+         *
+         * To access default props in child components, we need to import {withBrowserRouter} from 'react-router-dom' in the child component.
+         * and export the child component withRouter
+         * export default withBrowserRouter(Search); in our case
          */
     }
 
@@ -167,4 +172,4 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default withRouter(Search);
