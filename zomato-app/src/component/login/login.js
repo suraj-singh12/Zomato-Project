@@ -17,8 +17,8 @@ class Login extends Component {
 
         this.state = {
             name: '',
-            email: 'email@email.com',
-            password: 'register1',
+            email: 'testuser@gmail.com',
+            password: 'testuser',
             message: ''
         }
     }
