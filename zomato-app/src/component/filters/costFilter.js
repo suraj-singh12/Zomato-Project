@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const url = 'https://app1api.herokuapp.com/filter'
-// const url = 'https://app1api.herokuapp.com/filter/1?lcost=700&hcost=1200'
+// const url = 'https://app1api.herokuapp.com/filter/1?lcost=700&hcost=1200&sort=-1'
 //  takes : mealType, hightCost, and lowCost
 
 
@@ -15,12 +15,19 @@ class CostFilter extends Component {
         let lcost = cost[0];
         let hcost = cost[1];
 
+        let sort = 1;
+        if(cost.length === 3) {
+            sort = (cost[2] === "0") ? -1 : 1;
+            // sorting 1 means ascending order, -1 means in descending order
+        }
         let costUrl;
 
         if (event.target.value === "") {
             costUrl = `${url}/${mealId}`;
-        } else {
+        } else if(cost.length === 2) {
             costUrl = `${url}/${mealId}?lcost=${lcost}&hcost=${hcost}`;
+        } else {
+            costUrl = `${url}/${mealId}?lcost=${lcost}&hcost=${hcost}&sort=${sort}`;
         }
 
         console.log(costUrl);
@@ -56,6 +63,19 @@ class CostFilter extends Component {
                 <label htmlFor="2001plus">
                     <input type="radio" name="cost" value="2001-5000" id="2001plus" /> 2001 +
                 </label>
+
+             {/* <!-- sort according to cost --> */}
+                <div id="listing-sort">
+                    <p>Sort</p>
+                    <label htmlFor="LtoH">
+                        <input type="radio" name="sort" value="10-5000-1" id="LtoH" /> Price Low to High
+                    </label>
+                    <label htmlFor="HtoL">
+                        <input type="radio" name="sort" value="10-5000-0" id="HtoL" /> Price High to Low
+                        {/* passing 0 instead of -1, because in the filterCost fn, we split by '-', so sending -1 would make things confusing there.
+                        this 0 we are sending instead of -1, we will decode it to -1 there in function itself. */}
+                    </label>
+                </div>
             </div>
         )
     }

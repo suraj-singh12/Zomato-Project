@@ -35,11 +35,13 @@ class Listing extends Component {
             <>
                 {/* <!-- main section of the page --> */}
                 <div id="listing-main-section">
+                    
                     <h1>Breakfast Places in Mumbai</h1>
                     {/* <!-- filter div (left hand side) --> */}
                     <div id="listing-filter">
                         <p id="listing-heading">Filters</p>
 
+                        {/* filter on basis of location */}
                         <div className="listing-sub-heading">
                             <p>Select Location</p>
                             <select>
@@ -50,35 +52,28 @@ class Listing extends Component {
                                 <option value="mumbai">Mumbai</option>
                             </select>
                         </div>
-                        
-                        {/* <!-- cuisine --> */}
+
+                        {/* <!-- filter on basis of cuisine --> */}
 
                         {/* sending mealId to CuisineFilter, & that will return the sorted data
                         and here we receive that sorted data in restPerCuisine which on receive 
                         calls the function setDataPerFilter() with that data, that function updates the state of restaurant data here. 
                         and the component re-renders with updated data*/}
                         <CuisineFilter mealId={this.props.match.params.id}
-                        restPerCuisine={(data) => {this.setDataPerFilter(data)}}/>
+                            restPerCuisine={(data) => { this.setDataPerFilter(data) }} />
 
 
-                        {/* <!-- cost --> */}
-                        
+                        {/* <!-- filter on basis of cost --> */}
+
                         {/* not passing mealId, will take it from sessionStorage,
                         could've sent also mealId from here, but, just doing it another way. */}
-                        <CostFilter 
-                        restPerCost={(data) => {this.setDataPerFilter(data)}}/>
-                        
+                        <CostFilter
+                            restPerCost={(data) => { this.setDataPerFilter(data) }} />
+
 
                         {/* <!-- sort according to cost --> */}
-                        <div id="listing-sort">
-                            <p>Sort</p>
-                            <label htmlFor="LtoH">
-                                <input type="radio" name="sort" value="Low to high" id="LtoH" /> Price Low to High
-                            </label>
-                            <label htmlFor="HtoL">
-                                <input type="radio" name="sort" value="High to low" id="HtoL" /> Price High to Low
-                            </label>
-                        </div>
+                        {/* done in costFilter itself */}
+                        
                     </div>
 
                     {/* <!-- these are the cards in Right hand side --> */}
