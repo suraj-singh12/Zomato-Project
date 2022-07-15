@@ -1,14 +1,59 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import './Header.css';
 
+
+const url = 'https://loginappapi.herokuapp.com/api/auth/userInfo';
 class Header extends Component {
 
+    constructor() {
+        super();
+
+        this.state = {
+            userData: '',
+        }
+    }
+
+    handleLogout = () => {
+        // clear all information of user
+        sessionStorage.removeItem('userInfo');
+        sessionStorage.removeItem('ltk');
+        sessionStorage.setItem('loginStatus', false);
+
+        // route the user back to home page
+        this.props.history.push('/');       // ensure to export the header withRouter because it is a child component, to use default props we need to import withRouter,  & export too.
+    }
+
     conditionalHeader = () => {
+        if (sessionStorage.getItem('ltk')) {
+            // if the login token exists, that means user is logged in
+            let data = this.state.userData;
+
+            let outArray = [data.name, data.email, data.phone, data.role];
+            // save user data (will use to fill the checkout page form details automatically)
+            sessionStorage.setItem('userInfo', outArray);
+
+            // save the loginStatus of user as true 
+            // we will use it to check if the user is logged in, whenever required.
+            sessionStorage.setItem('loginStatus', true);
+
+            return (
+                <div id="account">
+                    <Link to="/">
+                        <button className="btn" id="login"><i class="bi bi-person-circle"></i> Hi {data.name}</button   >
+                    </Link>
+                    <button onClick={this.handleLogout} className="btn" id="create-account">Logout</button>
+                </div>
+            )
+        }
         return (
             <div id="account">
-                <Link to="/login"><p id="login">Login</p></Link>
-                <Link to="/register"><p id="create-account">Create an account</p></Link>
+                <Link to="/login">
+                    <button className="btn" id="login">Login</button>
+                </Link>
+                <Link to="/register">
+                    <button className="btn" id="create-account">Create an Account</button>
+                </Link>
             </div>
         )
     }
@@ -27,9 +72,25 @@ class Header extends Component {
             </>
         )
     }
+
+    // get user info after login
+    componentDidMount() {
+        // get the user information using the login token (from sessionStorage)
+        // it was saved when user logged in (in login.js)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'x-access-token': sessionStorage.getItem('ltk')
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                this.setState({ userData: data })
+            })
+    }
 }
 
-export default Header;
+export default withRouter(Header);
 
 // <header>
 //     {/* <!-- navigation bar start--> */}

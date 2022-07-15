@@ -73,7 +73,7 @@ class Register extends Component {
                             <div className="col-md-6">
                                 <label className="form-label" htmlFor="password">Password:</label>
                                 <input type="password" id="password" name="password" className="form-control"
-                                    value={this.state.address} onChange={this.handleChange} required />
+                                    value={this.state.password} onChange={this.handleChange} required />
                             </div>
                             <div className="col-md-6">
                                 <label className="form-label" htmlFor="phone">Phone:</label>
