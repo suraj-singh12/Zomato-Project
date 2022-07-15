@@ -52,6 +52,10 @@ class Header extends Component {
             but on viewOrder/viewBooking page, we fetch sessionStorage.getItem('userInfo') before the header's  componentDidMount() is called,
             i.e. in between when the header is loading, so we get (,,,) three commas and no data (i.e.  data before header's api call)
 
+            if we try to fetch sessionStorage.getItem('userInfo') anywhere outside componentDidMount(), then we would the correct updated data for sure,
+            but we call it inside the componentDidMount() of Parent Component (viewOrder/viewBooking), so that's why we get such partial & intermediate results (,,,)
+
+
             so to fix this issue, I am commenting out the above lines which are setting the userInfo in sessionStorage
             and writing an if condition, so sessionStorage is only updated once after userLogin, 
             and whenever the header is mounted again on a new component, it doesn't touch the userInfo neither before api call, nor after api call (also we know this userInfo does not change in any re-render/ mounting after login)

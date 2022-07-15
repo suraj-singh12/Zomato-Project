@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './details.css'
-import { Link } from 'react-router-dom';
 import MenuDisplay from './menuDisplay';
 import Header from '../../header';
 
@@ -63,7 +62,7 @@ class RestDetails extends Component {
         // if no item is added to cart, we cannot proceed then
         if(!this.state.userItem) {
             console.log('userItem is :', this.state.userItem);
-            alert('Cannot place an empty order! Please select atleast one item.');
+            alert('Cannot place an empty order! Please select at least one item.');
             return;
         }
         // save the state of menu userItems on pressing checkout button
