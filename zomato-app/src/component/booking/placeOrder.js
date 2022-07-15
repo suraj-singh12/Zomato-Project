@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './placeOrder.css';
+import Header from '../../header';
 
 // will use to show the images of selected items 
 const url = 'https://app1api.herokuapp.com/menuItem';
@@ -22,9 +23,14 @@ class PlaceOrder extends Component {
     }
 
     checkout = () => {
+        if(!this.state.cost) {
+            console.log('cost is : NaN');
+            alert('Cannot place an empty order! Please select atleast one item.');
+            return;
+        }
         // here will make a call to api, to insert order details in database.
         // we only need item ids instead of full data of them
-        
+
         let obj = this.state;
         // in sessionStorage 'menu' we only have the ids of the items user selected on details page.
         obj.menuItem = sessionStorage.getItem('menu');
@@ -39,7 +45,7 @@ class PlaceOrder extends Component {
             body: JSON.stringify(obj)
             // pushed the details of order by this user, into database.
         })
-        .then(this.props.history.push('/viewBooking')); // redirecting to viewBooking page, after pushing order details in database.
+            .then(this.props.history.push('/viewBooking')); // redirecting to viewBooking page, after pushing order details in database.
         // after hitting Place Order button on checkout page, I can view 
         // the data pushed to my database here: https://app1api.herokuapp.com/orders
     }
@@ -48,8 +54,8 @@ class PlaceOrder extends Component {
         if (data) {
             return data.map((item) => {
                 return (
-                    <div className="order-items" style={{ marginRight:'3%', width: '250px', height:'350px', float: 'left', boxShadow: '1px 1px 8px 2px orange', borderRadius: '2%'}} key={item.menu_id}>
-                        <img src={item.menu_image} style={{height: '250px', width: '99.8%', borderRadius: '2%'}} alt={item.menu_name} />
+                    <div className="order-items" style={{ marginRight: '3%', width: '250px', height: '350px', float: 'left', boxShadow: '1px 1px 8px 2px orange', borderRadius: '2%' }} key={item.menu_id}>
+                        <img src={item.menu_image} style={{ height: '250px', width: '99.8%', borderRadius: '2%' }} alt={item.menu_name} />
                         <h4>{item.menu_name}</h4>
                         <h4>Rs. {item.menu_price}</h4>
                     </div>
@@ -71,6 +77,7 @@ class PlaceOrder extends Component {
     render() {
         return (
             <>
+                <Header />
                 {/* // note it is important to have the name= field of all the below items same as in the state name
                 // because we use this for advantage in handleChange() */}
                 <div className="container-fluid" style={{ marginTop: '2%', marginBottom: '2%' }}>
@@ -104,9 +111,9 @@ class PlaceOrder extends Component {
                                 </label>
                             </div>
                         </div>
-                        
+
                         {/* render Items that user had selected */}
-                        <div class="container" style={{display: 'inline-block', textAlign: 'center'}}>
+                        <div className="container" style={{ display: 'inline-block', textAlign: 'center' }}>
                             {this.renderItem(this.state.menuItem)}
                         </div>
 

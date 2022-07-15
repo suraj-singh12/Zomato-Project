@@ -1,27 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import OrderDisplay from './orderDisplay';
+import Header from '../../header';
 
-const url='https://app1api.herokuapp.com/orders';
+const url = 'https://app1api.herokuapp.com/orders';
 
 class ViewOrder extends Component {
     constructor(props) {
         super(props);
 
-        this.state={
-            orders:''
+        this.state = {
+            orders: ''
         }
     }
 
     render() {
         return (
-            <OrderDisplay orderData={this.state.orders} />
+            <>
+                <Header />
+                <OrderDisplay orderData={this.state.orders} />
+            </>
         )
     }
 
     // wait function
     timeout = (delay) => {
-        return new Promise( res => setTimeout(res, delay) );
+        return new Promise(res => setTimeout(res, delay));
     }
 
     // calling api to get all orders information
@@ -36,10 +40,10 @@ class ViewOrder extends Component {
         // this ensures we give ample time between both calls & updated data is received.
 
         // getting all orders from api
-        axios.get(url, {method: 'GET'})
-        .then((res) => {
-            this.setState({orders: res.data});
-        })
+        axios.get(url, { method: 'GET' })
+            .then((res) => {
+                this.setState({ orders: res.data });
+            })
         // fetch(url, {method: 'GET'})
         // .then((res) => res.json()) 
         // .then((data) => {

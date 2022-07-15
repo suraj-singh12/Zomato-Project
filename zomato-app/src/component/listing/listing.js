@@ -11,6 +11,7 @@ import './listing.css';
 import ListingDisplay from './listingDisplay';
 import CuisineFilter from '../filters/cuisineFilter';
 import CostFilter from '../filters/costFilter';
+import Header from '../../header';
 
 const url = "https://app1api.herokuapp.com/restaurants";
 
@@ -33,9 +34,10 @@ class Listing extends Component {
     render() {
         return (
             <>
+                <Header />
                 {/* <!-- main section of the page --> */}
                 <div id="listing-main-section">
-                    
+
                     <h1>Breakfast Places in Mumbai</h1>
                     {/* <!-- filter div (left hand side) --> */}
                     <div id="listing-filter">
@@ -73,7 +75,7 @@ class Listing extends Component {
 
                         {/* <!-- sort according to cost --> */}
                         {/* done in costFilter itself */}
-                        
+
                     </div>
 
                     {/* <!-- these are the cards in Right hand side --> */}

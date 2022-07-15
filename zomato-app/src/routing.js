@@ -5,13 +5,12 @@ import Listing from './component/listing/listing';
 import Details from './component/details/restDetails';
 import PlaceOrder from './component/booking/placeOrder';
 import ViewOrder from './component/booking/viewOrder';
-import Header from './header';
 import Footer from './footer';
 
 const Routing = () => {
     return (
         <BrowserRouter>
-            <Header />
+            
             <Route exact path="/" component={Home} />
             
             {/* using params in /listing (see :id) */}

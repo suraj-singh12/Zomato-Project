@@ -8,6 +8,7 @@ import axios from 'axios';
 import './details.css'
 import { Link } from 'react-router-dom';
 import MenuDisplay from './menuDisplay';
+import Header from '../../header';
 
 // 1. fetch way of calling  api
 /*
@@ -72,6 +73,7 @@ class RestDetails extends Component {
         let { details } = this.state;     // is equivalent to above one
         return (
             <div>
+                <Header />
                 <div id="details-main-content">
                     <div id="details-photo">
                         <img src={this.state.details.restaurant_thumb} alt="snacks" />
