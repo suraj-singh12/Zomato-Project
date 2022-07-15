@@ -67,7 +67,8 @@ class Search extends Component {
             ))
     }
 
-    // on selecting restaurant corresponding to selected city, redirect user to detail page of that restaurant
+    // on selecting restaurant corresponding to selected city, 
+    // redirect user to detail page of that restaurant (directly to that restaurant)
     handleRestaurant = (event) => {
         const restId = event.target.value;
         this.props.history.push(`/details?restId=${restId}`);   // redirecting
