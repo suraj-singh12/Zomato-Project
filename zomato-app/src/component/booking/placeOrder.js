@@ -36,6 +36,18 @@ class PlaceOrder extends Component {
         obj.menuItem = sessionStorage.getItem('menu');
         // now we have orderIds only, in menuItem, which makes it easy to make api call now.
 
+        // remove items present in cart of this restaurant from sessionStorage
+        // let restaurant = sessionStorage.getItem('last_page').charAt(sessionStorage.getItem('last_page').length - 1);
+        // if(sessionStorage.getItem('restOfMenu') === restaurant) {
+
+        // no need of above checks, because sessionStorage's restOfMenu gets updated as soon we come on checkout page, & menu also
+        // so cart always represents items of the restaurant where we are currently going to place order. 
+        sessionStorage.removeItem('restOfMenu');
+        sessionStorage.removeItem('menu');
+        console.log('>>> Items erased from cart.')
+        
+        // }
+
         fetch(purl, {
             method: 'POST',
             headers: {
@@ -45,7 +57,7 @@ class PlaceOrder extends Component {
             body: JSON.stringify(obj)
             // pushed the details of order by this user, into database.
         })
-            .then(this.props.history.push('/viewBooking')); // redirecting to viewBooking page, after pushing order details in database.
+        .then(this.props.history.push('/viewBooking')); // redirecting to viewBooking page, after pushing order details in database.
         // after hitting Place Order button on checkout page, I can view 
         // the data pushed to my database here: https://app1api.herokuapp.com/orders
     }
@@ -163,13 +175,15 @@ class PlaceOrder extends Component {
         let menuItem = sessionStorage.getItem('menu');
         let orderId = [];
         // since menuItem is a string, we need to split it & parse ids in it as numbers into orderId array
-        menuItem.split(',').map((item) => {
-            orderId.push(parseInt(item));
-            // returning ok, because we have nothing to return, 
-            // but need to return something so that the function does not show any warning, 
-            // so returning ok
-            return 'ok';
-        });
+        if(menuItem) {
+            menuItem.split(',').map((item) => {
+                orderId.push(parseInt(item));
+                // returning ok, because we have nothing to return, 
+                // but need to return something so that the function does not show any warning, 
+                // so returning ok
+                return 'ok';
+            });
+        }
         console.log(orderId);
 
         // now we have all order ids in number array orderId
