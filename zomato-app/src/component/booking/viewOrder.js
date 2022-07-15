@@ -8,19 +8,45 @@ const url = 'https://app1api.herokuapp.com/orders';
 class ViewOrder extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             orders: ''
         }
     }
 
     render() {
-        return (
-            <>
-                <Header />
-                <OrderDisplay orderData={this.state.orders} />
-            </>
-        )
+        // in sessionStorage everything is stored in the form of string, so even we set boolean false when user is not logged in, 
+        // but in sessionStorage it is stored as a string. So compare with string false.
+
+        // for loginStatus to be present in sessionStorage, atleast one user must have logged in and then logged out before.
+        // so if no user has logged in & we come on this page, then sessionStorage.getItem('loginStatus') will be null.
+        // !sessionStorage.getItem('loginStatus') will take care of this case.
+        // and sessionStorage.getItem('loginStatus') === 'false' will take care of other normal cases.
+
+        console.log('loginStatus: ', sessionStorage.getItem('loginStatus'));
+        if (!sessionStorage.getItem('loginStatus') || sessionStorage.getItem('loginStatus') === 'false') {
+            /* if the user is not logged in then we don't want him to reach this page,
+             * because only a logged in user can make an order */
+
+            console.log('inside if: ')
+            return (
+                <>
+                    <Header />
+                    <div className="container" style={{ textAlign: 'center', padding: '2%', color: 'blue' }}>
+                        <h3>
+                            Login First to Place Order
+                        </h3>
+                    </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Header />
+                    <OrderDisplay orderData={this.state.orders} />
+                </>
+            )
+        }
     }
 
     // wait function
@@ -51,9 +77,9 @@ class ViewOrder extends Component {
         console.log(`${url}?email=${email}`);
 
         axios.get(`${url}?email=${email}`)
-        .then((res) => {
-            this.setState({orders: res.data});
-        })
+            .then((res) => {
+                this.setState({ orders: res.data });
+            })
 
         // fetch(url, {method: 'GET'})
         // .then((res) => res.json()) 
