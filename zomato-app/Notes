@@ -40,3 +40,10 @@ If you change your app name, you need to again change the redirection url.
 
 Then commit, and push the changes to git.
 Deploy the updated Payment Gateway again in Heroku (so changes are reflected in deployment.)
+
+<!-- 
+got into an error: 
+when you put any path name directly in url, the page shows 404 on netlify, even when the data comes back from payment gateway, then also we get 404 on netlify.
+
+To fix this: 
+https://dev.to/rajeshroyal/page-not-found-error-on-netlify-reactjs-react-router-solved-43oa -->
