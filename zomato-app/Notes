@@ -1,1 +1,34 @@
-Note: Any API interaction should happen through state only.
+## Note 1: 
+Any API interaction should happen through state only.
+
+## Note 2 (Build) 
+1. After you have completed your application fully, (i.e. everything is working and is live: Backend, database ,  APIs, every component is live and working) then run the command:
+
+```npm
+npm run build
+```
+> and you will get a build of your application in `build` folder.
+
+2. Anytime you make any changes to your application, run the command again.
+
+3. Then go to the website https://www.netlify.com and SIGN up / login with Git.
+
+4. On the landing page there, you will find a field saying `Drag and drop your site output folder here`
+
+5. Drag and drop your `build` folder into that. 
+
+6. Wait for a minute and refresh the page, then you will get a live `url` of your app.
+
+7. Go in change site settings, and change the name of your app, so it looks good. Then your `url` will also get updated. Use the new one.
+
+> If it doesn't work, wait for some time (say 2 min), if still doesn't works then delete it once, and redo the things. 
+
+## So at the end we have everything as live: 
+1. Database: on MongoDb Atlas (i.e. in Cloud)
+
+2. Heroku  : 
+  a. Backend API, 
+  b. Login API, 
+  c. Payment gateway
+
+3. FrontEnd: on netlify
