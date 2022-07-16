@@ -45,7 +45,7 @@ class PlaceOrder extends Component {
         sessionStorage.removeItem('restOfMenu');
         sessionStorage.removeItem('menu');
         console.log('>>> Items erased from cart.')
-        
+
         // }
 
         fetch(purl, {
@@ -57,9 +57,11 @@ class PlaceOrder extends Component {
             body: JSON.stringify(obj)
             // pushed the details of order by this user, into database.
         })
-        .then(this.props.history.push('/viewBooking')); // redirecting to viewBooking page, after pushing order details in database.
+            // .then(this.props.history.push('/viewBooking')); // not redirecting to viewBooking page, after pushing order details in database.
         // after hitting Place Order button on checkout page, I can view 
         // the data pushed to my database here: https://app1api.herokuapp.com/orders
+
+        // after this, the user goes for payment
     }
 
     renderItem = (data) => {
@@ -89,7 +91,7 @@ class PlaceOrder extends Component {
     render() {
         // in sessionStorage everything is stored in the form of string, so even we set boolean false when user is not logged in, 
         // but in sessionStorage it is stored as a string. So compare with string false.
-        
+
         // for loginStatus to be present in sessionStorage, atleast one user must have logged in and then logged out before.
         // so if no user has logged in & we come on this page, then sessionStorage.getItem('loginStatus') will be null.
         // !sessionStorage.getItem('loginStatus') will take care of this case.
@@ -104,7 +106,7 @@ class PlaceOrder extends Component {
             return (
                 <>
                     <Header />
-                    <div className="container" style={{textAlign: 'center', padding: '2%', color:'blue'}}>
+                    <div className="container" style={{ textAlign: 'center', padding: '2%', color: 'blue' }}>
                         <h3>
                             Login First to Place Order
                         </h3>
@@ -122,44 +124,52 @@ class PlaceOrder extends Component {
                             <h2 style={{ backgroundColor: 'lightBlue', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
                                 Your order for {this.state.hotel_name}
                             </h2>
-                            <div className="row" style={{ padding: '1%' }}>
-                                <div className="col-md-6">
-                                    <label className="form-label" htmlFor="fname">Name:
-                                        <input type="text" id="fname" name="name" className="form-control"
-                                            value={this.state.name} onChange={this.handleChange} />
-                                    </label>
-                                </div>
-                                <div className="col-md-6">
-                                    <label className="form-label" htmlFor="email">Email:
-                                        <input type="email" id="email" name="email" className="form-control"
-                                            value={this.state.email} onChange={this.handleChange} />
-                                    </label>
-                                </div>
-                                <div className="col-md-6">
-                                    <label className="form-label" htmlFor="phone">Phone:
-                                        <input type="number" id="phone" name="phone" className="form-control"
-                                            value={this.state.phone} onChange={this.handleChange} />
-                                    </label>
-                                </div>
-                                <div className="col-md-6">
-                                    <label className="form-label" htmlFor="address">Address:
-                                        <input type="text" id="address" name="address" className="form-control"
-                                            value={this.state.address} onChange={this.handleChange} />
-                                    </label>
-                                </div>
-                            </div>
+                            {/* form: below form on clicking submit button will first save the order details in database,
+                            & redirect the user to payment gateway*/}
+                            <form action="https://pay-with-paytm.herokuapp.com/paynow" method="POST">
+                                <input type="hidden" name="cost" value={this.state.cost} />
+                                <input type="hidden" name="id" value={this.state.id} />
+                                <input type="hidden" name="hotel_name" value={this.state.hotel_name} />
 
-                            {/* render Items that user had selected */}
-                            <div className="container" style={{ display: 'inline-block', textAlign: 'center' }}>
-                                {this.renderItem(this.state.menuItem)}
-                            </div>
-
-                            <div className="row" style={{ margin: '2%' }}>
-                                <div className="col-md-9">
-                                    <h3>Total Price is: {this.state.cost}</h3>
+                                <div className="row" style={{ padding: '1%' }}>
+                                    <div className="col-md-6">
+                                        <label className="form-label" htmlFor="fname">Name:
+                                            <input type="text" id="fname" name="name" className="form-control"
+                                                value={this.state.name} onChange={this.handleChange} />
+                                        </label>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label className="form-label" htmlFor="email">Email:
+                                            <input type="email" id="email" name="email" className="form-control"
+                                                value={this.state.email} onChange={this.handleChange} />
+                                        </label>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label className="form-label" htmlFor="phone">Phone:
+                                            <input type="number" id="phone" name="phone" className="form-control"
+                                                value={this.state.phone} onChange={this.handleChange} />
+                                        </label>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <label className="form-label" htmlFor="address">Address:
+                                            <input type="text" id="address" name="address" className="form-control"
+                                                value={this.state.address} onChange={this.handleChange} />
+                                        </label>
+                                    </div>
                                 </div>
-                                <button className="btn btn-success col-md-2" onClick={this.checkout}>Place Order</button>
-                            </div>
+
+                                {/* render Items that user had selected */}
+                                <div className="container" style={{ display: 'inline-block', textAlign: 'center' }}>
+                                    {this.renderItem(this.state.menuItem)}
+                                </div>
+
+                                <div className="row" style={{ margin: '2%' }}>
+                                    <div className="col-md-9">
+                                        <h3>Total Price is: {this.state.cost}</h3>
+                                    </div>
+                                    <button className="btn btn-success col-md-2" type="submit" onClick={this.checkout}>Place Order</button>
+                                </div>
+                            </form>
                         </div>
                         <hr />
                     </div>
@@ -175,7 +185,7 @@ class PlaceOrder extends Component {
         let menuItem = sessionStorage.getItem('menu');
         let orderId = [];
         // since menuItem is a string, we need to split it & parse ids in it as numbers into orderId array
-        if(menuItem) {
+        if (menuItem) {
             menuItem.split(',').map((item) => {
                 orderId.push(parseInt(item));
                 // returning ok, because we have nothing to return, 
