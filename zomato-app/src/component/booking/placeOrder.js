@@ -57,11 +57,24 @@ class PlaceOrder extends Component {
             body: JSON.stringify(obj)
             // pushed the details of order by this user, into database.
         })
-            // .then(this.props.history.push('/viewBooking')); // not redirecting to viewBooking page, after pushing order details in database.
+        // .then(this.props.history.push('/viewBooking')); // not redirecting to viewBooking page, after pushing order details in database.
         // after hitting Place Order button on checkout page, I can view 
         // the data pushed to my database here: https://app1api.herokuapp.com/orders
 
-        // after this, the user goes for payment
+        // after this, the user goes for payment, and from there he will be redirected to the /viewOrder page automatically.
+        /*
+         in my suraj-singh12/pay-with-paytm repository (paytm payment one) check the commits: 
+         1.    changed /callback's redirection url (i.e. url to redirect after payment complete) to my app running 
+on localhost
+        2.     orderId will be fetched from my application (form that we submit on checkout page), if not found in 
+that only then use custom id (which will happen when not running this payment gateway via application)
+
+            These were the next things that I did, to make the application work as intended.
+            now the orderId in payment, will be same as our orderId here.
+            so now we can easily update the order (with status, date etc in database) via that information directly
+            using orderId itself.
+        */
+
     }
 
     renderItem = (data) => {
