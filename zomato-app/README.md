@@ -1,6 +1,13 @@
+# CheckOut the live App here:
+<font size="4">[**Live App**](https://zomato-app12.netlify.app/)</font>
+<hr />
+<br />
+<br />
+
 # Getting Started with Create React App
 
-# How To Run
+
+# How To Run Locally
 
 ## Install Dependencies
 ```npm
@@ -22,7 +29,7 @@ npm start
 ```
 
 ## Build the Project
-
+Read `Notes.md`
 
 
 

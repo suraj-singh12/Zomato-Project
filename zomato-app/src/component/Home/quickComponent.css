@@ -65,6 +65,7 @@
 
 .quick-tile-component2-dark {
     background-color: #2e2a2a !important;
+    border-radius: 0 10% 10% 0;
 }
 
 .quick-component2-heading {
