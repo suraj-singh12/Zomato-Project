@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../header';
+import './loginSignup.css';
 /* we will need to call header in each parent component now,
    so it will be child component of all Parent components.
 
@@ -72,8 +73,8 @@ class Login extends Component {
             <>
                 <Header />
                 <form className="container-fluid" style={{ marginTop: '2%', marginBottom: '2%' }} onSubmit={this.handleSubmit}>
-                    <div className="container" style={{ border: '1px solid lightblue', padding: '0', borderRadius: '10px' }}>
-                        <h2 style={{ backgroundColor: 'lightgreen', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
+                    <div className="container login" style={{ border: '1px solid lightblue', padding: '0', borderRadius: '10px' }}>
+                        <h2 className="login-heading" style={{ backgroundColor: 'lightgreen', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
                             Login
                         </h2>
                         <h2 className="message" style={{ color: "red", textAlign: 'center' }}>{this.state.message}</h2>
@@ -94,7 +95,7 @@ class Login extends Component {
 
                         </div>
 
-                        <button className="btn btn-warning" type="submit" style={{ margin: "2% 90%" }}>Login</button>
+                        <button className="btn btn-warning" type="submit" style={{ margin: "2% 0 2% 90%" }}>Login</button>
                     </div>
                 </form>
             </>

@@ -11,6 +11,10 @@
     width: 88%;
 }
 
+.listing-main-section-dark, .listing-main-section-dark a {
+    color: white !important;
+}
+
 /* filter div css */
 #listing-filter {
     float: left;

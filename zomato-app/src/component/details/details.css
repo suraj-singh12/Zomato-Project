@@ -10,6 +10,7 @@
     margin-left: 5%;
     display: inline-block;
     margin-bottom: 5%;
+    color: black;
 }
 #details-photo {
     margin-left: 5%;
@@ -30,6 +31,10 @@
     width: 45%;
     float: left;
     font-size: 20px;
+    color: black;
+}
+.details-content-dark {
+    color: antiquewhite !important;
 }
 #details-heading-main {
     margin-top: 0;
@@ -75,9 +80,22 @@
     margin-bottom: 20px;
     margin-top: 0;
 }
+.details-menuDisplay-dark {
+    color: white;
+}
 .details-menu-items-down {
     margin-top: 0;
     margin-bottom: 0;
+}
+.details-menu-items-head-dark {
+    box-shadow: rgb(0 0 0 / 25%) 0px 0.0625em 0.0625em, rgb(0 0 0 / 25%) 0px 0.125em 0.5em, rgb(255 255 255 / 10%) 0px 0px 0px 1px inset;
+    padding: 1%;
+    padding-left: 2%;
+    margin-bottom: 1%;
+}
+.details-menu-items-list-dark {
+    box-shadow: rgb(0 0 0 / 25%) 0px 0.0625em 0.0625em, rgb(0 0 0 / 25%) 0px 0.125em 0.5em, rgb(255 255 255 / 10%) 0px 0px 0px 1px inset;
+    padding: 1%;
 }
 /* ---------------------------------------------------------------------------- */
 @media screen and (max-width: 970px) {

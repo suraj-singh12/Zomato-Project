@@ -81,7 +81,7 @@ that only then use custom id (which will happen when not running this payment ga
         if (data) {
             return data.map((item) => {
                 return (
-                    <div className="order-items" style={{ marginRight: '3%', width: '250px', height: '350px', float: 'left', boxShadow: '1px 1px 8px 2px orange', borderRadius: '2%' }} key={item.menu_id}>
+                    <div className="order-items" style={{ marginTop: '20px', marginRight: '3%', width: '250px', height: '350px', float: 'left', boxShadow: '#767676 2px 2px 1px', borderRadius: '2%' }} key={item.menu_id}>
                         <img src={item.menu_image} style={{ height: '250px', width: '99.8%', borderRadius: '2%' }} alt={item.menu_name} />
                         <h4>{item.menu_name}</h4>
                         <h4>Rs. {item.menu_price}</h4>
@@ -133,46 +133,42 @@ that only then use custom id (which will happen when not running this payment ga
                     {/* // note it is important to have the name= field of all the below items same as in the state name
                         // because we use this for advantage in handleChange() */}
                     <div className="container-fluid" style={{ marginTop: '2%', marginBottom: '2%' }}>
-                        <div className="container" style={{ border: '1px solid lightblue', padding: '0', borderRadius: '10px' }}>
-                            <h2 style={{ backgroundColor: 'lightBlue', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
+                        <div className="container" style={{ boxShadow: 'lightblue 1px 1px 10px 1px', border: '1px solid lightblue', padding: '0', borderRadius: '10px' }}>
+                            <h2 className="orders-heading" style={{ backgroundColor: 'lightBlue', textAlign: 'center', padding: '1%', color: 'white', borderRadius: '10px 10px 0 0' }}>
                                 Your order for {this.state.hotel_name}
                             </h2>
                             {/* form: below form on clicking submit button will first save the order details in database,
                             & redirect the user to payment gateway*/}
-                            <form action="https://pay-with-paytm.herokuapp.com/paynow" method="POST">
+                            <form className="orders-form" action="https://pay-with-paytm.herokuapp.com/paynow" method="POST">
                                 <input type="hidden" name="cost" value={this.state.cost} />
                                 <input type="hidden" name="id" value={this.state.id} />
                                 <input type="hidden" name="hotel_name" value={this.state.hotel_name} />
 
                                 <div className="row" style={{ padding: '1%' }}>
                                     <div className="col-md-6">
-                                        <label className="form-label" htmlFor="fname">Name:
-                                            <input type="text" id="fname" name="name" className="form-control"
-                                                value={this.state.name} onChange={this.handleChange} />
-                                        </label>
+                                        <label className="form-label" htmlFor="fname">Name:</label>
+                                        <input type="text" id="fname" name="name" className="form-control"
+                                            value={this.state.name} onChange={this.handleChange} />
                                     </div>
                                     <div className="col-md-6">
-                                        <label className="form-label" htmlFor="email">Email:
-                                            <input type="email" id="email" name="email" className="form-control"
-                                                value={this.state.email} onChange={this.handleChange} />
-                                        </label>
+                                        <label className="form-label" htmlFor="email">Email:</label>
+                                        <input type="email" id="email" name="email" className="form-control"
+                                            value={this.state.email} onChange={this.handleChange} />
                                     </div>
                                     <div className="col-md-6">
-                                        <label className="form-label" htmlFor="phone">Phone:
-                                            <input type="number" id="phone" name="phone" className="form-control"
-                                                value={this.state.phone} onChange={this.handleChange} />
-                                        </label>
+                                        <label className="form-label" htmlFor="phone">Phone:</label>
+                                        <input type="number" id="phone" name="phone" className="form-control"
+                                            value={this.state.phone} onChange={this.handleChange} />
                                     </div>
                                     <div className="col-md-6">
-                                        <label className="form-label" htmlFor="address">Address:
-                                            <input type="text" id="address" name="address" className="form-control"
-                                                value={this.state.address} onChange={this.handleChange} />
-                                        </label>
+                                        <label className="form-label" htmlFor="address">Address: </label>
+                                        <input type="text" id="address" name="address" className="form-control"
+                                            value={this.state.address} onChange={this.handleChange} />
                                     </div>
                                 </div>
 
                                 {/* render Items that user had selected */}
-                                <div className="container" style={{ display: 'inline-block', textAlign: 'center' }}>
+                                <div className="container" style={{ display: 'inline-block', textAlign: 'center', margin:'1%' }}>
                                     {this.renderItem(this.state.menuItem)}
                                 </div>
 

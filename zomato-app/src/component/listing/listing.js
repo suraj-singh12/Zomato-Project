@@ -18,6 +18,7 @@ const url = "https://app1api.herokuapp.com/restaurants";
 class Listing extends Component {
     constructor(props) {
         super(props);
+        console.log('listing page props: ', this.props)
 
         // save the location of current page(except login/register/placeOrder/viewOrder pages, we do this on all pages[home, listing, details]) as last visited page; will use it to when non-logged in user logs in; will redirect him to his previous page (before login)
         let last_page_address = this.props.match.url + this.props.location.search;

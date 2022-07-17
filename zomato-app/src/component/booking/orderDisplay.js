@@ -1,4 +1,5 @@
 import React from 'react';
+import './orderDisplay.css';
 
 const OrderDisplay = (props) => {
     console.log(props);
@@ -25,9 +26,9 @@ const OrderDisplay = (props) => {
     }
 
     return (
-        <div className="container">
-            <center><h2>Orders</h2></center>
-            <table className="table">
+        <div className="container view-booking-info">
+            <center style={{marginTop: '2%'}}><h2>Orders</h2></center>
+            <table className="table view-booking-table">
                 <thead>
                     <tr>
                         <th>OrderId</th>

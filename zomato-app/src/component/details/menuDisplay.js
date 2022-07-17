@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class MenuDisplay extends Component {
 
+    constructor(props) {
+        super(props);
+
+        console.log('in menuDisplay',this.props);
+    }
     // not making 'orderId' a state, because it would otherwise lead to 
     // re-rendering of page on every addition/subtraction, which we don't want.
     orderId = [];
@@ -48,14 +53,14 @@ class MenuDisplay extends Component {
         if (menudata) {
             return menudata.map((item) => {
                 return (
-                    <div className="row" key={item._id}>
-                        <div className="col-md-8">
-                            <b>{item.menu_id}</b>
-                            <img src={item.menu_image} style={{ height: '80px', width: '80px' }} alt="menuItem" />
-                            {item.menu_name} - Rs. {item.menu_price}
+                    <div className="row" key={item._id} style={{boxShadow: 'rgba(0, 0, 0, 0.15) 0px 3px 3px 0px', padding: '1%'}}>
+                        <div className="col-md-10">
+                            <b style={{padding: '2%'}}>{item.menu_id}</b>
+                            <img src={item.menu_image} style={{ height: '80px', width: '80px',borderRadius: '0.5rem' }} alt="menuItem" />
+                            <span style={{marginLeft: '20px'}}>{item.menu_name} - Rs. {item.menu_price}</span>
                         </div>
 
-                        <div className="col-md-4">
+                        <div className="col-md-2" style={{marginTop: '15px'}}>
                             <button className="btn btn-success" onClick={() => {this.placeOrder(item.menu_id)}}>  {/* add item on clicking + button */}
                                 <span className="bi bi-plus"></span>
                             </button>
@@ -77,11 +82,11 @@ class MenuDisplay extends Component {
         
         return (
             <div className="container">
-                <div className="col-md-12 bg-success details-menu-items-down">
+                <div className="col-md-12 details-menu-items-down details-menu-items-head">
                     <h1>Item Added</h1>
                     <span>Item Number {this.renderCart(this.orderId)} Added</span>
                 </div>
-                <div className="col-md-12 bg-info details-menu-items-down">
+                <div className="col-md-12 details-menu-items-down details-menu-items-list">
                     {this.renderMenu(this.props)}
                 </div>
             </div>

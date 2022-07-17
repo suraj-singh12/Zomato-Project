@@ -2,7 +2,10 @@
 .food-img{
     background-image: url(/src/image/food-wallpaper.png);
     background-repeat: no-repeat;
-    background-size: 100% 27vw;   /* height is 50 viewport width */
+    background-size: 100% 25vw;   /* height is 50 viewport width */
+}
+.food-img-dark {
+    background-color: #3c3c3c;
 }
 
 #logo {
@@ -19,6 +22,11 @@
     display:inline-block;
     font-family: 'Sansita Swashed', cursive;
 }
+.logo-dark {
+    background-color: rgb(30 29 29 / 57%) !important;
+    color: white !important;
+    /* border-radius: 50% !important; */
+}
 #logo > span {
     /* display: inline-block; */
     /* margin-top: 3%; */
@@ -32,6 +40,11 @@
     /* margin-left: 24%; */
     color: white;
     font-size: 4vw;
+}
+.dropdown-toggle-dark {
+    color: white !important;
+    background-color: rgb(86 86 82) !important;
+    border: rgb(195, 193, 163) !important;
 }
 .dropdown-enhancement button, .dropdown-enhancement ul {
     font-size: 1.7vw;

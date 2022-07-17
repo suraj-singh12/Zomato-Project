@@ -4,7 +4,39 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer>
-            <div className="container-fluid text-center identity">
+            <div className="container-fluid text-center">
+
+                <div className="footer-socials" style={{ fontSize: '1rem', textAlign: 'center', padding: '1%' }}>
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                        <i className="bi bi-facebook" style={{ color: 'blue' }}></i>
+                    </a>
+                    <a href="https://instagram.com/my_emerging_thoughts" target="_blank" rel="noreferrer">
+                        <i className="bi bi-instagram" style={{ color: 'red' }}></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                        <i className="bi bi-twitter" style={{ color: 'lightblue' }}></i>
+                    </a>
+
+                    <a href="https://youtube.com" target="_blank" rel="noreferrer">
+                        <i className="bi bi-youtube" style={{ color: 'red' }}></i>
+                    </a>
+
+                    <a href="https://github.com/suraj-singh12" target="_blank" rel="noreferrer">
+                        <i className="bi bi-github" style={{color: 'black'}}></i>
+                    </a>
+
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                        <i className="bi bi-linkedin" style={{ color: 'blue' }}></i>
+                    </a>
+
+                </div>
+
+                <hr />
+                <div className="copyright">
+                    <a href="https://github.com/suraj-singh12" target="_blank" rel="noreferrer">&copy; 2022 Copyright: suraj-singh12 (Suraj Singh)</a>
+                </div>
+            </div>
+            {/* <div className="container-fluid text-center identity">
                 <a href="https://github.com/suraj-singh12/" target="_blank" rel="noreferrer">suraj-singh12 (Suraj Singh)</a>
             </div>
             <hr />
@@ -23,7 +55,7 @@ const Footer = () => {
                         <p>About Us</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </footer>
     )
 }
