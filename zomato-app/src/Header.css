@@ -88,6 +88,7 @@ header {
     font-size: 1.08rem;
     color: white;
     padding: 5px;
+    cursor: pointer;
     box-shadow: rgb(249 178 178) 0px -50px 36px -28px inset;
 }
 .weather-dark {

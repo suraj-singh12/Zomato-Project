@@ -10,6 +10,7 @@ footer {
 }
 .footer-dark {
     background-color: #3c3c3c !important;
+    color: white;
     /* box-shadow: 10px 20px 40px black !important; */
 }
 .footer-socials > a, .copyright > a{
