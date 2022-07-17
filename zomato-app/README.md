@@ -1,14 +1,12 @@
 # CheckOut the live App here:
-<font size="4">[**Live App**](https://zomato-app12.netlify.app/)</font>
+<font size="4">[**Live App**](https://zomato-app12.netlify.app)</font>
 <hr />
 <br />
-<br />
+
 
 # Getting Started with Create React App
 
-
 # How To Run Locally
-
 ## Install Dependencies
 ```npm
 npm install
@@ -31,6 +29,13 @@ npm start
 ## Build the Project
 Read `Notes.md`
 
+
+## [Simplifying the Model] This is how things are connected live: 
+1. Database (mongodb live)
+2. APIs (on heroku) interacting with my live database
+3. Payment Gateway (on heroku) using my test API keys redirecting back to app
+4. Login / Register App (on heroku) interacting with my live database
+5. React App (interacting with above 4) live on netlify
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -49,3 +49,10 @@ To fix this:
 https://dev.to/rajeshroyal/page-not-found-error-on-netlify-reactjs-react-router-solved-43oa 
 
 -->
+
+## These are how things are connected : 
+1. database (mongodb live)
+2. APIs (on heroku) interacting with my live database
+3. Payment Gateway (on heroku) using my test API keys redirecting back to app
+4. Login / Register App (on heroku) interacting with my live database
+5. React App (interacting with above 4) live on netlify
