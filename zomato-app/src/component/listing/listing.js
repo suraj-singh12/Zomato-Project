@@ -49,18 +49,6 @@ class Listing extends Component {
                     <div id="listing-filter">
                         <p id="listing-heading">Filters</p>
 
-                        {/* filter on basis of location */}
-                        <div className="listing-sub-heading">
-                            <p>Select Location</p>
-                            <select>
-                                <option value="no-location" defaultValue>Select Location</option>
-                                <option value="mathura">Mathura</option>
-                                <option value="agra">Agra</option>
-                                <option value="delhi">Delhi</option>
-                                <option value="mumbai">Mumbai</option>
-                            </select>
-                        </div>
-
                         {/* <!-- filter on basis of cuisine --> */}
 
                         {/* sending mealId to CuisineFilter, & that will return the sorted data
