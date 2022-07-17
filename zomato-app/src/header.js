@@ -12,6 +12,7 @@ class Header extends Component {
 
         this.state = {
             userData: '',
+            currentWeather: ''
         }
     }
 
@@ -31,6 +32,7 @@ class Header extends Component {
         document.getElementsByTagName('body')[0].style.backgroundColor = '#3c3c3c';
         // document.getElementById('root').style.backgroundColor = '#3c3c3c';
         ele = document.getElementsByTagName('header')[0].classList.add('header-dark');
+        ele = document.getElementsByClassName('weather')[0].classList.add('weather-dark');
         ele = document.getElementsByTagName('footer')[0].classList.add('footer-dark');
         ele = document.getElementsByClassName('footer-socials')[0].classList.add('footer-socials-dark');
         ele = document.getElementsByClassName('copyright')[0].classList.add('copyright-dark');
@@ -93,7 +95,7 @@ class Header extends Component {
             console.log('NightMode on placeOrder page');
             document.getElementsByClassName('orders-heading')[0].classList.add('orders-heading-dark');
             document.getElementsByClassName('orders-form')[0].classList.add('orders-form-dark');
-        } else if(this.props.match.url.split('/')[1] === 'viewBooking' && document.getElementsByClassName('view-booking-info').length > 0) {
+        } else if (this.props.match.url.split('/')[1] === 'viewBooking' && document.getElementsByClassName('view-booking-info').length > 0) {
             console.log('NightMode on viewBooking page');
             document.getElementsByClassName('view-booking-info')[0].classList.add('view-booking-info-dark');
             document.getElementsByClassName('view-booking-table')[0].classList.add('view-booking-table-dark');
@@ -107,6 +109,7 @@ class Header extends Component {
         document.getElementsByTagName('body')[0].style.backgroundColor = '#ffffff';
         // document.getElementById('root').style.backgroundColor = '#ffffff';
         ele = document.getElementsByTagName('header')[0].classList.remove('header-dark');
+        ele = document.getElementsByClassName('weather')[0].classList.remove('weather-dark');
         ele = document.getElementsByTagName('footer')[0].classList.remove('footer-dark');
         ele = document.getElementsByClassName('footer-socials')[0].classList.remove('footer-socials-dark');
         ele = document.getElementsByClassName('copyright')[0].classList.remove('copyright-dark');
@@ -164,7 +167,7 @@ class Header extends Component {
             console.log('NightMode on placeOrder page');
             document.getElementsByClassName('orders-heading')[0].classList.remove('orders-heading-dark');
             document.getElementsByClassName('orders-form')[0].classList.remove('orders-form-dark');
-        } else if(this.props.match.url.split('/')[1] === 'viewBooking' && document.getElementsByClassName('view-booking-info').length > 0) {
+        } else if (this.props.match.url.split('/')[1] === 'viewBooking' && document.getElementsByClassName('view-booking-info').length > 0) {
             console.log('NightMode on viewBooking page');
             document.getElementsByClassName('view-booking-info')[0].classList.remove('view-booking-info-dark');
             document.getElementsByClassName('view-booking-table')[0].classList.remove('view-booking-table-dark');
@@ -208,6 +211,54 @@ class Header extends Component {
             currentMode = 'night';
             this.setDay();
         }
+    }
+
+    getLocationAndWeather = () => {
+        // set day/night icon to set
+        let hour = new Date().getHours();
+        console.log('current time hours:', hour);
+        if (hour >= 21 || hour <= 5) {
+            let icon = document.getElementsByClassName('bi-brightness-high-fill');
+            if (icon.length > 0) {
+                icon[0].classList.add('bi-moon-stars-fill');
+                icon[0].classList.remove('bi-brightness-high-fill');
+            }
+        } else {
+            let icon = document.getElementsByClassName('bi-moon-stars-fill');
+            if (icon.length > 0) {
+                icon[0].classList.add('bi-brightness-high-fill');
+                icon[0].classList.remove('bi-moon-stars-fill');
+            }
+        }
+
+        // if weather is not set
+        if (this.state.currentWeather === '') {
+            // now ask user to give permission to access location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(this.getWeather);  // this.getWeather is a callback function here
+            } else {
+                console.log('Geolocation is not supported by this browser.');
+            }
+        } else {
+            console.log('locWtr already exists', sessionStorage.getItem('locWtr'));     //    \u00B0 is code for degree symbol
+        }
+    }
+
+    getWeather = (data) => {
+        console.log('getting weather for : ', data);
+        let latitude = data.coords.latitude;
+        let longitude = data.coords.longitude;
+        const url = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&mode=json&units=metric&cnt=1&appid=fbf712a5a83d7305c3cda4ca8fe7ef29`;
+
+        // api calling to get weather information for user's location
+        fetch(url, { method: `GET` })
+            .then((res) => res.json())
+            .then((data) => {
+                let weatherData = data.list[0].temp.day;
+                sessionStorage.setItem('locWtr', weatherData);      // saving in sessionStorage, because that allows quick fetching of data, otherwise if we fetch from state, then it takes time (at-least in this case)
+                this.setState({currentWeather: weatherData});       // due to setting the state, the component will be re-rendered hence showing the weather.
+                // otherwise the page would not show weather when loaded for first time
+            });
     }
 
     conditionalHeader = () => {
@@ -302,6 +353,7 @@ class Header extends Component {
                             {/* <i className="bi bi-moon-fill"></i> */}
                         </button>
                     </div>
+                    <div className="weather">{sessionStorage.getItem("locWtr")} C <i className="bi bi-brightness-high-fill"></i></div>
                 </>
             )
         } else {
@@ -323,6 +375,7 @@ class Header extends Component {
                             {/* <i className="bi bi-moon-fill"></i> */}
                         </button>
                     </div>
+                    <div className="weather">{sessionStorage.getItem("locWtr")} C <i className="bi bi-brightness-high-fill"></i></div>
                 </>
             )
         }
@@ -340,6 +393,7 @@ class Header extends Component {
                     </Link>
                     {this.conditionalHeader()}
                     {this.checkNightModeOnPageLoad()}
+                    {this.getLocationAndWeather()}
                 </header>
             </>
         )

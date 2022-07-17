@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './search.css';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const url = "https://app1api.herokuapp.com/location";
 const restUrl = "https://app1api.herokuapp.com/restaurants";
@@ -98,6 +98,7 @@ class Search extends Component {
          * export default withBrowserRouter(Search); in our case
          */
     }
+
 
     style = {
         cityDropdown: {
