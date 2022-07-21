@@ -363,7 +363,7 @@ class Header extends Component {
                 <>
                     <div id="weather"></div>
 
-                    <div class="account">
+                    <div className="account">
                         <Link to="/register">
                             <button className="btn" id="create-account">Create an Account</button>
                         </Link>
