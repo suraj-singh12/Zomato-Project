@@ -49,6 +49,7 @@
 }
 .dropdown-enhancement {
     left: 2%;
+    width: 97%;
 }
 .dropdown-enhancement button, .dropdown-enhancement ul {
     font-size: 1.7vw;

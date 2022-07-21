@@ -76,8 +76,8 @@ const ListingDisplay = (props) => {
         } else {
             // if data has not come yet (means api is not yet called), say loading
             return (
-                <div style={{ marginLeft: '25%' }}>
-                    <img src={require("./images/loader.gif")} alt="loader" />
+                <div className="loader-img">
+                    <img src={require("./images/loader.gif")} style={{height:'inherit', width: 'auto'}} alt="loader" />
                     <h2>Loading...</h2>
                 </div>
             )
