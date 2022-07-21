@@ -48,8 +48,18 @@ class Register extends Component {
             body: JSON.stringify(this.state)
             // pushed the details of user, into database.
         })
-            .then(() => {
-                alert('User Registered successfully'); 
+            .then((data) => {
+                console.log(data);
+                let message = "User Registered successfully";
+                // api sends status 500, if user is already registered else 200.
+                if(data.status === 500) {
+                    // user already exists
+                    // Response {type: 'cors', url: 'https://loginappapi.herokuapp.com/api/auth/register', redirected: false, status: 500, ok: false, …}
+                    message = "User Already Exists!! Please Login";
+                }
+                // user registered
+                // Response {type: 'cors', url: 'https://loginappapi.herokuapp.com/api/auth/register', redirected: false, status: 200, ok: true, …}
+                alert(message); 
                 this.props.history.push('/login');
             }); // redirecting to login, after user is registered.
         // for dev purpose, all registered users can be seen here: https://loginappapi.herokuapp.com/api/auth/users 
