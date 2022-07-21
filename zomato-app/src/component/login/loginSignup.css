@@ -13,8 +13,14 @@
 .login-button {
     margin: 2% 0 2% 80%;
 }
+.register-button {
+    margin: 2% 0 2% 80%;
+}
 @media screen and (max-width:772px) {
     .login-button {
+        margin: 2% 0 2% 70%;
+    }
+    .register-button {
         margin: 2% 0 2% 70%;
     }
 }

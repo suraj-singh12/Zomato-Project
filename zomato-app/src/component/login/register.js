@@ -86,7 +86,9 @@ class Register extends Component {
                                     value={this.state.phone} onChange={this.handleChange} required />
                             </div>
                         </div>
-                        <button className="btn btn-success" type="submit" style={{ margin: "2% 0 2% 90%" }}>Register</button>
+                        <div className="row text-center" style={{ padding: '1%' }}>
+                            <button className="register-button col-md-2 btn btn-success" type="submit">Register</button>
+                        </div>
                     </div>
                 </form>
             </>
