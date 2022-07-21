@@ -51,8 +51,8 @@ const ListingDisplay = (props) => {
                                 <div className="listing-card-below">
                                     <div className="listing-text-below-img">
                                         <p>MEALTYPE:</p>
-                                        <p style={{marginTop: '25px'}}>CUISINES:</p>
-                                        <p style={{marginTop: '15px'}}>COST FOR TWO:</p>
+                                        <p className="listing-card-cuisines" style={{marginTop: '25px'}}>CUISINES:</p>
+                                        <p className="listing-item-price" style={{marginTop: '15px'}}>COST:</p>
                                     </div>
                                     <div className="listing-text-below-content">
                                         <p>{getMealType(item.mealTypes)}</p>

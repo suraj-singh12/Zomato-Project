@@ -4,14 +4,16 @@
 /* ********************************************************** */
 #listing-main-section {
     display: inline-block;
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
+    font-family: serif;
     margin: auto;
     margin-left: 10%;
     margin-top: 1%;
     width: 88%;
 }
 
-.listing-main-section-dark, .listing-main-section-dark a {
+.listing-main-section-dark,
+.listing-main-section-dark a {
     color: white !important;
 }
 
@@ -174,3 +176,157 @@ hr {
 }
 
 /* ********************************************************** */
+
+/* responsiveness */
+@media screen and (max-width: 1200px) {
+    #listing-main-section {
+        width: 88%;
+    }
+
+    #listing-filter {
+        float: left;
+        width: 27%;
+    }
+
+    #listing-cards {
+        width: 61%;
+    }
+
+    .listing-card {
+        width: 100%;
+        margin-bottom: 7%;
+    }
+
+    .listing-card-upper {
+        width: 100%;
+    }
+
+    .listing-image {
+        float: none;
+    }
+
+    .listing-content {
+        float: none;
+        text-align: center;
+        width: auto;
+        line-height: 1;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    .listing-text-below-content>p>span,
+    .listing-text-below-img>p {
+        font-size: 0.8rem;
+    }
+
+    .listing-item-price {
+        margin-top: 1.8rem !important;
+    }
+
+    .listing-text-below-img {
+        margin-left: 3%;
+    }
+
+    #listing-filter {
+        float: left;
+        width: 35%;
+    }
+
+    #listing-main-section {
+        margin-left: 9%;
+    }
+
+    #listing-cards {
+        width: 53%;
+    }
+
+    #listing-heading {
+        font-size: 26px;
+    }
+
+    #listing-main-section>h1 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #listing-main-section {
+        margin-left: 5%;
+    }
+
+    #listing-cards {
+        width: 60%;
+    }
+
+    .listing-text-below-img {
+        width: 30%;
+    }
+
+    .listing-text-below-content {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .listing-item-price {
+        margin-top: 3.6rem !important;
+    }
+
+    #listing-heading {
+        font-size: 26px;
+    }
+
+    #listing-main-section>h1 {
+        font-size: 28px;
+    }
+
+    .listing-content {
+        font-size: 0.8rem;
+    }
+
+    .listing-content-heading {
+        font-size: 1.4rem;
+    }
+
+    .listing-content-subheading {
+        font-size: 1rem;
+    }
+
+    .listing-text-below-content>p>span,
+    .listing-text-below-img>p {
+        font-size: 0.6rem;
+    }
+
+    .listing-text-below-img {
+            width: 35%;
+    }
+
+    .listing-text-below-content {
+            width: 60%;
+    }
+    #listing-filter {
+        font-size: 0.6rem;
+    }
+    .listing-card-cuisines {
+        margin-top: 2.3rem !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .listing-card-cuisines {
+        margin-top: 3.3rem !important;
+    }
+    .listing-text-below-img {
+        width: 40%;
+    }
+    .listing-text-below-content {
+        width: 46%;
+    }
+    #listing-main-section>h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* responsiveness added till 320px */
