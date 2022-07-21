@@ -37,7 +37,7 @@ class CuisineFilter extends Component {
          & here you can just call that api & render the data using data.map()*/
         return (
             <div className="listing-sub-heading" onChange={this.filterCuisine}>
-                <p>From CusineFilter : Cuisine</p>
+                <p>Cuisine</p>
                 <label htmlFor="all">
                     <input type="radio" id="all" name="cuisine" value="" />All
                 </label>

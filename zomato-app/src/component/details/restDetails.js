@@ -154,13 +154,14 @@ class RestDetails extends Component {
 
         // checking if there is something in the cart of this restaurant already (added by non-logged in user)
         if (sessionStorage.getItem('menu')) {
-            console.log('inside menu')
+            // console.log('inside menu')
             // i.e. if there is already something in cart (added by non-logged in user)
             // then after he logs in, check the cart, & add these items there.
             // ensure to erase the items once user logs out.
 
             let orderId = [];
-            let current_rest_id = this.props.location.search.charAt(this.props.location.search.length - 1);
+            let current_rest_id = this.props.location.search.split('=')[1];
+
             console.log('current restaurant_id: ', current_rest_id);
             if (current_rest_id === sessionStorage.getItem('restOfMenu')) {
                 console.log('Items found in cart of this restaurant.')

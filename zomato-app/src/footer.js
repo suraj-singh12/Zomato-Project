@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="container-fluid text-center">
-                <div class="footer-heading">
+                <div className="footer-heading">
                     <h2>Connect With Me</h2>
                 </div>
                 <div className="footer-socials" style={{ fontSize: '1rem', textAlign: 'center', padding: '1%' }}>

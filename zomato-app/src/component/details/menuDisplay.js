@@ -17,6 +17,7 @@ class MenuDisplay extends Component {
         // so that when user comes back to this restaurant, he will find the items already added to cart.
         // if he had placed order the items won't remain in list anymore, if he had removed them then too they would find nothing in cart.
 
+        // console.log('restaurant_id: ', sessionStorage.getItem('restOfMenu'))
         this.props.finalOrder(this.orderId);  // this will be received by the parent component (in restDetails) 
         // and there our finalOrder function calls the addToCart function, which updates the userItem state
     }

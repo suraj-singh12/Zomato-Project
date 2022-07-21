@@ -216,7 +216,7 @@ class Header extends Component {
     getLocationAndWeather = () => {
         // set day/night icon to set
         let hour = new Date().getHours();
-        console.log('current time hours:', hour);
+        // console.log('current time hours:', hour);
         if (hour >= 21 || hour <= 5) {
             let icon = document.getElementsByClassName('bi-brightness-high-fill');
             if (icon.length > 0) {
@@ -240,7 +240,7 @@ class Header extends Component {
                 console.log('Geolocation is not supported by this browser.');
             }
         } else {
-            console.log('locWtr already exists', sessionStorage.getItem('locWtr'));     //    \u00B0 is code for degree symbol
+            // console.log('locWtr already exists', sessionStorage.getItem('locWtr'));     //    \u00B0 is code for degree symbol
         }
     }
 
