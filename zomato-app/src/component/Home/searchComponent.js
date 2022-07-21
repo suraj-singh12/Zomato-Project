@@ -103,7 +103,7 @@ class Search extends Component {
     style = {
         cityDropdown: {
             position: 'relative',
-            fontSize: '1.5vw',
+            fontSize: '1.3rem',
             backgroundColor: '#c3c1a3',
             border: '#c3c1a3',
             borderRadius: '5%',

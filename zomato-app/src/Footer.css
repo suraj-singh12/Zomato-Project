@@ -15,10 +15,19 @@ footer {
 }
 .footer-socials > a, .copyright > a{
     color: black;
-    font-size: 1.5vw;
+    font-size: 1.45rem;
     margin: 0 3%;
     text-decoration: none;
 }
 .footer-socials-dark > a, .copyright-dark > a {
     color: white !important;
+}
+
+@media screen and (max-width: 650px) {
+    .footer-heading h2, .footer-heading{
+        font-size: 1.4rem;
+    }
+    .copyright a {
+        font-size: 1.3rem;
+    }
 }

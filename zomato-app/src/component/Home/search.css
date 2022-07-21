@@ -2,7 +2,7 @@
 .food-img{
     background-image: url(/src/image/food-wallpaper.png);
     background-repeat: no-repeat;
-    background-size: 100% 25vw;   /* height is 50 viewport width */
+    background-size: 100% 80%; 
 }
 .food-img-dark {
     background-color: #3c3c3c;
@@ -10,17 +10,18 @@
 
 #logo {
     background-color: rgba(255, 255, 255, 0.575);
-    width: 10vw;
-    height: 10vw;
+    width: 9rem;
+    height: 9rem;
     border-radius: 50%;
     margin-top: 2%;
-
+    margin-left: 15%;
     /* either of these properties can solve the problem */
     /* what problem? comment both of these */
     /* position: absolute; */
     /* display: inline-block is better (allows bootstrap to work on) */
     display:inline-block;
     font-family: 'Sansita Swashed', cursive;
+    cursor: pointer;
 }
 .logo-dark {
     background-color: rgb(30 29 29 / 57%) !important;
@@ -31,7 +32,7 @@
     /* display: inline-block; */
     /* margin-top: 3%; */
     /* margin-left: 19%; */
-    font-size: 6vw;
+    font-size: 5.8rem;
 }
 #heading {
     display: inline-block;
@@ -39,12 +40,15 @@
     /* margin-top: 12%; */
     /* margin-left: 24%; */
     color: white;
-    font-size: 4vw;
+    font-size: 3.8rem;
 }
 .dropdown-toggle-dark {
     color: white !important;
     background-color: rgb(86 86 82) !important;
     border: rgb(195, 193, 163) !important;
+}
+.dropdown-enhancement {
+    left: 2%;
 }
 .dropdown-enhancement button, .dropdown-enhancement ul {
     font-size: 1.7vw;
@@ -56,4 +60,11 @@
 }
 .dropdown-enhancement button {
     border-radius: 15px;
+}
+
+/* responsiveness */
+@media screen and (max-width: 1150px) {
+    .food-img {
+        background-size: 100% 90%; 
+    }
 }

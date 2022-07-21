@@ -256,7 +256,7 @@ class Header extends Component {
             .then((data) => {
                 let weatherData = data.list[0].temp.day;
                 sessionStorage.setItem('locWtr', weatherData);      // saving in sessionStorage, because that allows quick fetching of data, otherwise if we fetch from state, then it takes time (at-least in this case)
-                this.setState({currentWeather: weatherData});       // due to setting the state, the component will be re-rendered hence showing the weather.
+                this.setState({ currentWeather: weatherData });       // due to setting the state, the component will be re-rendered hence showing the weather.
                 // otherwise the page would not show weather when loaded for first time
             });
     }
@@ -341,11 +341,13 @@ class Header extends Component {
             sessionStorage.setItem('loginStatus', true);
             return (
                 <>
-                    <div id="account">
-                        <Link to="/">
-                            <button className="btn" id="login"><i className="bi bi-person-circle"></i> Hi {data.name}</button   >
-                        </Link>
+                    <div className="account">
                         <button onClick={this.handleLogout} className="btn" id="create-account">Logout</button>
+                    </div>
+                    <div className="account">
+                        <Link to="/">
+                            <button className="btn logged-in" id="login"><i className="bi bi-person-circle"></i> Hi {data.name}</button   >
+                        </Link>
                     </div>
                     <div id="dark-mode">
                         <button onClick={this.handleNightModeOnClick}>
@@ -361,12 +363,14 @@ class Header extends Component {
                 <>
                     <div id="weather"></div>
 
-                    <div id="account">
-                        <Link to="/login">
-                            <button className="btn" id="login">Login</button>
-                        </Link>
+                    <div class="account">
                         <Link to="/register">
                             <button className="btn" id="create-account">Create an Account</button>
+                        </Link>
+                    </div>
+                    <div className="account">
+                        <Link to="/login">
+                            <button className="btn" id="login">Login</button>
                         </Link>
                     </div>
                     <div id="dark-mode">

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Merriweather:ital,wght@0,300;1,300&family=PT+Sans&family=Playfair+Display&family=Poppins:wght@200&family=Sansita+Swashed:wght@300;400&display=swap');
 
+html {
+    font-size: 16px;
+    /* change the font size of html, and everything having size using rem, will automatically change */
+}
 /* header css */
 header {
     background-color: #ffabab;
@@ -19,7 +23,7 @@ header {
     background-color: white;
     color: orange;
     margin-left: 4%;
-    margin-top: 0.50%;
+    margin-top: 8px;
     height: 50px;
     width: 50px;
     text-align: center;
@@ -32,30 +36,33 @@ header {
 
 #icon>p {
     margin-top: 3%;
-    font-size: 30px;
+    font-size: 1.8rem;
     cursor: pointer;
     /* cursor: pointer; makes the pointer to change to hand on hovering over icon>p */
 }
 
 /* social links (header of the page) */
-#account {
+.account {
     float: right;
-    margin-right: 1%;
-    width: 18%;
+    margin-right: 2%;
+    margin-top: 7px;
+    width: auto;
     height: 100%;
 }
 
-#account p,
-#account button {
+.account p,
+.account button {
     display: inline-block;
-    font-size: 18px;
+    font-size: 1.2rem;
     margin-top: 6%;
 }
-
 #login {
     color: white;
-    margin-right: 10%;
+    /* margin-right: 10%; */
     cursor: pointer;
+}
+.logged-in {
+    margin-top: 2px !important;
 }
 
 #create-account {
@@ -67,9 +74,9 @@ header {
 }
 
 #dark-mode {
-    margin-top: 1.3vw;
+    margin-top: 14px;
     margin-right: 1.2vw;
-    font-size: 1.4vw;
+    font-size: 1.4rem;
     color: white;
     float: right;
 }
@@ -83,7 +90,7 @@ header {
 
 .weather {
     float: right;
-    margin-right: 3%;
+    margin-right: 2%;
     margin-top: 10px;
     font-size: 1.08rem;
     color: white;
@@ -107,6 +114,20 @@ header {
 }
 .weather-dark> .bi-moon-stars-fill{
     color: #cacae7;
+}
+@media screen and (max-width: 550px) {
+    #create-account {
+        font-size: 1.1rem;
+    }
+    #login {
+        font-size: 1.1rem;
+    }
+    .weather {
+        font-size: 1rem;
+    }
+    .weather > i {
+        font-size: 1.3rem;
+    }
 }
 /* ------------------------------------------------------------------------------------------------ */
 /* .food-img-dark {
