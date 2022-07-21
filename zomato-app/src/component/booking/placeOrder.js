@@ -81,7 +81,7 @@ that only then use custom id (which will happen when not running this payment ga
         if (data) {
             return data.map((item) => {
                 return (
-                    <div className="order-items" style={{ marginTop: '20px', marginRight: '3%', width: '250px', height: '350px', float: 'left', boxShadow: '#767676 2px 2px 1px', borderRadius: '2%' }} key={item.menu_id}>
+                    <div className="order-items" style={{ marginTop: '20px', marginRight: '3%', width: '250px', height: '380px', float: 'left', boxShadow: '#767676 2px 2px 1px', borderRadius: '2%' }} key={item.menu_id}>
                         <img src={item.menu_image} style={{ height: '250px', width: '99.8%', borderRadius: '2%' }} alt={item.menu_name} />
                         <h4>{item.menu_name}</h4>
                         <h4>Rs. {item.menu_price}</h4>
