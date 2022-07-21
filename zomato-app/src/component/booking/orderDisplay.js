@@ -34,7 +34,7 @@ const OrderDisplay = (props) => {
     return (
         <div className="container view-booking-info">
             <center><h2>Orders</h2></center>
-            <table className="table table-hover view-booking-table">
+            <table className="table view-booking-table">
                 <thead>
                     <tr>
                         <th scope="col">OrderId</th>
