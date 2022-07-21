@@ -104,10 +104,10 @@ class RestDetails extends Component {
                         <i className="fa-regular fa-star checked"></i>
                         <i className="fa-regular fa-star-half checked"></i>
                         <span>231 Customers Rating is {details.rating_text}</span>
-                        <h4>
+                        <h4 className="details-item-price">
                             <strike>Old Price: {details.cost + 240}</strike>
                         </h4>
-                        <h4>New Price: {details.cost}</h4>
+                        <h4 className="details-item-price">New Price: {details.cost}</h4>
                         <h4>Best Taste of Fresh Chai with Samosa At your Door or Dine In</h4>
                         <div id="details-icons">
                             <div className="details-icon">
