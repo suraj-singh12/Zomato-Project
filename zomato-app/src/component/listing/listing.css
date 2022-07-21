@@ -213,8 +213,17 @@ hr {
     }
 }
 
+@media screen and (max-width: 800px) {
+    .listing-card:hover {
+        transform: scale(1.04);
+    }
+}
+
 @media screen and (max-width: 750px) {
 
+    .listing-card {
+        margin-bottom: 10%;
+    }
     .listing-text-below-content>p>span,
     .listing-text-below-img>p {
         font-size: 0.8rem;

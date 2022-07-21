@@ -179,6 +179,7 @@
         width: 90% !important;
         word-wrap: break-word;
         font-weight: bold;
+        margin-top: 5%;
     }
 }
 /* responsiveness added till 320px */

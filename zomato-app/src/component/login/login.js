@@ -78,7 +78,7 @@ class Login extends Component {
                             Login
                         </h2>
                         <h2 className="message" style={{ color: "red", textAlign: 'center' }}>{this.state.message}</h2>
-                        
+
                         <div className="row" style={{ padding: '1%' }}>
 
                             <div className="col-md-6">
@@ -94,8 +94,9 @@ class Login extends Component {
                             </div>
 
                         </div>
-
-                        <button className="btn btn-warning" type="submit" style={{ margin: "2% 0 2% 90%" }}>Login</button>
+                        <div className="row text-center" style={{ padding: '1%' }}>
+                            <button className="login-button col-md-2 btn btn-warning" type="submit">Login</button>
+                        </div>
                     </div>
                 </form>
             </>
