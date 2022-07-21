@@ -1,5 +1,6 @@
 .view-booking-info {
     margin-bottom: 4%;
+    overflow: auto;
 }
 
 .view-booking-info-dark {
