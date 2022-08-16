@@ -20,6 +20,9 @@ npm i axios
 ```npm
 npm i bootstrap@latest --save
 ```
+```npm
+npm install 
+```
 
 ## Run the project
 ```npm

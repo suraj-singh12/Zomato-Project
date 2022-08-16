@@ -177,7 +177,7 @@ that only then use custom id (which will happen when not running this payment ga
                                         <h3>Total Price is: {this.state.cost}</h3>
                                     </div>
                                     <button className="btn btn-success col-md-2" type="submit" onClick={this.checkout}>Place Order</button>
-                                </div>
+                                </div>  
                             </form>
                         </div>
                         <hr />
